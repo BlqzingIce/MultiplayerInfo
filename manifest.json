@@ -1,0 +1,13 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataFileSchema/master/Schema.json",
+  "id": "MultiplayerInfo",
+  "name": "MultiplayerInfo",
+  "author": "BlqzingIce",
+  "version": "1.0.0",
+  "description": "",
+  "gameVersion": "1.21.0",
+  "dependsOn": {
+    "BeatSaberMarkupLanguage": "^1.5.3",
+    "BSIPA": "^4.2.0"
+  }
+}
