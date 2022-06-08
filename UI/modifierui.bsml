@@ -1,0 +1,6 @@
+﻿<settings-container child-control-width='true' child-expand-width='true' size-delta-y='0'>
+	<checkbox-setting text='Detailed Results' value='ResultsInfo' hover-hint='Display more detailed play data on the multiplayer results table'/>
+	<checkbox-setting text='Show Accuracy' value='ShowAccuracy' hover-hint='If Detailed Results is enabled, also display average cut accuracy'/>
+	<checkbox-setting text='Nicknames' value='EnableNicknames' hover-hint='Enable custom nicknames'/>
+	<button text='Open Nickname Editor' on-click='nick_button_clicked' hover-hint='Edit existing nicknames or add new ones for players currently in the lobby'></button>
+</settings-container>

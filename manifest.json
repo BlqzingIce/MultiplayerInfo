@@ -5,7 +5,7 @@
   "author": "BlqzingIce",
   "version": "1.0.0",
   "description": "",
-  "gameVersion": "1.21.0",
+  "gameVersion": "1.22.0",
   "dependsOn": {
     "BeatSaberMarkupLanguage": "^1.5.3",
     "BSIPA": "^4.2.0"

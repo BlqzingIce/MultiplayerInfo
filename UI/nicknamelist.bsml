@@ -1,0 +1,22 @@
+﻿<bg anchor-pos-y="6">
+  <vertical>
+    <horizontal preferred-width="80" child-control-width="true" />
+    <horizontal>
+      <button pref-height="8" align="Center" text="Add Player" on-click="add_pressed" />
+      <button pref-height="8" align="Center" text="Edit Selected" on-click="edit_pressed" />
+      <button pref-height="8" align="Center" text="Remove Selected" on-click="remove_pressed" />
+    </horizontal>
+    <list id="nick_list" list-style="Simple" select-cell="select_nick" stick-scrolling="true" show-scrollbar="true" />
+  </vertical>
+  <modal-keyboard show-event="open_keyboard" click-off-closes="true" value="nick" on-enter="keyboard_enter" />
+  <modal id="AddModal" show-event="open_modal" hide-event="closeModals" click-off-closes="true" size-delta-x="80" size-delta-y="80">
+    <vertical anchor-pos-y="6">
+      <horizontal preferred-width="80" child-control-width="true" />
+      <horizontal>
+        <button text="Add Selected" on-click="add_player" />
+        <button text="Cancel" click-event="closeModals" />
+      </horizontal>
+      <list id="player_list" list-style="Simple" select-cell="select_player" stick-scrolling="true" show-scrollbar="true" />
+    </vertical>
+  </modal>
+</bg>
