@@ -1,16 +1,18 @@
 ﻿using HarmonyLib;
 using System.Collections.Generic;
 using MultiplayerInfo.Models;
+using System;
 
 namespace MultiplayerInfo.HarmonyPatches
 {
-    [HarmonyPatch(typeof(BeatmapCallbacksController), "Dispose")]
+    [HarmonyPatch(typeof(BeatmapCallbacksController), MethodType.Constructor)]
+    [HarmonyPatch(new Type[] { typeof(BeatmapCallbacksController.InitData) })]
     internal class BeatmapCallbacksPatch
     {
-        public static int maxRawScore = 1;
-        public static void Prefix(IReadonlyBeatmapData ____beatmapData)
+        public static int maxRawScore = -1;
+        public static void Postfix(BeatmapCallbacksController.InitData initData)
         {
-            maxRawScore = ScoreModel.ComputeMaxMultipliedScoreForBeatmap(____beatmapData);
+            maxRawScore = ScoreModel.ComputeMaxMultipliedScoreForBeatmap(initData.beatmapData);
         }
     }
 
@@ -28,6 +30,7 @@ namespace MultiplayerInfo.HarmonyPatches
                     ____scoreText.transform.localPosition = ____scoreText.transform.localPosition + new UnityEngine.Vector3(7, 0, 0);
                 }
 
+                /*
                 Plugin.Log.Info("player: " + connectedPlayer.userName + " (id: " + connectedPlayer.userId + ")");
                 Plugin.Log.Info("modifiedScore: " + levelCompletionResults.modifiedScore.ToString());
                 Plugin.Log.Info("rawScore: " + levelCompletionResults.multipliedScore.ToString());
@@ -36,15 +39,24 @@ namespace MultiplayerInfo.HarmonyPatches
                 Plugin.Log.Info("acc: " + levelCompletionResults.averageCutScoreForNotesWithFullScoreScoringType.ToString());
                 Plugin.Log.Info("max combo: " + levelCompletionResults.maxCombo.ToString());
                 Plugin.Log.Info("endSongTime: " + levelCompletionResults.endSongTime.ToString());
+                */
 
                 bool passedLevel = levelCompletionResults.levelEndStateType == LevelCompletionResults.LevelEndStateType.Cleared ? true : false;
                 bool isNoFail = levelCompletionResults.gameplayModifiers.noFailOn0Energy && levelCompletionResults.energy == 0;
                 int totalMisses = levelCompletionResults.missedCount + levelCompletionResults.badCutsCount;
                 string preText = !passedLevel ? "F    " : isNoFail ? "NF    " : "";
                 string missText = levelCompletionResults.fullCombo ? "<color=yellow>FC</color>" : preText + "<color=red>X</color><size=65%> </size>" + totalMisses.ToString();
+
                 string score = ____scoreText.text;
-                string percentageText = ((double)levelCompletionResults.multipliedScore / BeatmapCallbacksPatch.maxRawScore * 100).ToString("00.00") + "%";
+
+                string percentageText;
+                if (BeatmapCallbacksPatch.maxRawScore == -1)
+                    percentageText = "ERROR";
+                else
+                    percentageText = ((double)levelCompletionResults.multipliedScore / BeatmapCallbacksPatch.maxRawScore * 100).ToString("00.00") + "%";
+
                 string accText = Configuration.PluginConfig.Instance.ShowAccuracy ? "<size=80%> (" + levelCompletionResults.averageCutScoreForNotesWithFullScoreScoringType.ToString("00.0") + " Avg Cut)</size>" : "            ";
+
                 ____rankText.SetText("");
                 ____scoreText.SetText(missText + "    " + score + "    " + percentageText + accText);
             }
