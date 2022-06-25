@@ -8,7 +8,7 @@ Adds total misses, score as a percentage, and accuracy to the multiplayer result
 
 - **Nicknames**  
 Customize the usernames of players in your lobby as you see fit!  
-(Note: Nicknames are only visible to you, changing your nickname does not change how other people see your username.)
+(Note: Nicknames are only visible to you, changing your nickname does not change how other people see your username.)  
 Some username displays make take a while to change after setting a nickname.
 
 ## How To Install
