@@ -1,6 +1,11 @@
 ﻿<settings-container child-control-width='true' child-expand-width='true' size-delta-y='0'>
-	<checkbox-setting text='Detailed Results' value='ResultsInfo' hover-hint='Display more detailed play data on the multiplayer results table'/>
-	<checkbox-setting text='Show Accuracy' value='ShowAccuracy' hover-hint='If Detailed Results is enabled, also display average cut accuracy'/>
-	<checkbox-setting text='Nicknames' value='EnableNicknames' hover-hint='Enable custom nicknames'/>
+	<checkbox-setting text='Nicknames' value='EnableNicknames' apply-on-change='true' hover-hint='Enable custom nicknames'/>
 	<button text='Open Nickname Editor' on-click='nick_button_clicked' hover-hint='Edit existing nicknames or add new ones for players currently in the lobby'></button>
+	<checkbox-setting text='Show Rank' value='ShowRank' apply-on-change='true' hover-hint='Display your rank if you finished the song'/>
+	<checkbox-setting text='Show Combo' value='ShowCombo' apply-on-change='true' hover-hint='Display max combo and fc'/>
+	<checkbox-setting text='Show Misses' value='ShowMisses' apply-on-change='true' hover-hint='If not fc, display total misses'/>
+	<checkbox-setting text='Show Bombs' value='ShowBombs' apply-on-change='true' hover-hint='If not fc, display total bombs hit'/>
+	<checkbox-setting text='Show Score' value='ShowScore' apply-on-change='true' hover-hint='Self explanatory'/>
+	<checkbox-setting text='Show Percent' value='ShowPercent' apply-on-change='true' hover-hint='Display percent of total possible score'/>
+	<checkbox-setting text='Show Accuracy' value='ShowAccuracy' apply-on-change='true' hover-hint='Display average cut accuracy out of 115'/>
 </settings-container>
