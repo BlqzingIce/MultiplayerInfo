@@ -27,14 +27,11 @@ namespace MultiplayerInfo
             Log.Debug("Config loaded");
 
             zenjector.Install<MultiplayerInfoMenuInstaller>(Location.Menu);
-            Log.Debug("MultiplayerInfo settings menu installed");
         }
 
         [OnStart]
         public void OnApplicationStart()
         {
-            Log.Debug("OnApplicationStart");
-
             harmony = new Harmony("com.BlqzingIce.BeatSaber.MultiplayerInfo");
             harmony.PatchAll(System.Reflection.Assembly.GetExecutingAssembly());
         }
@@ -42,7 +39,6 @@ namespace MultiplayerInfo
         [OnExit]
         public void OnApplicationQuit()
         {
-            Log.Debug("OnApplicationQuit");
             harmony.UnpatchSelf();
         }
     }

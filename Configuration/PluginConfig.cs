@@ -24,5 +24,6 @@ namespace MultiplayerInfo.Configuration
         public virtual bool ShowScore { get; set; } = true;
         public virtual bool ShowPercent { get; set; } = true;
         public virtual bool ShowAccuracy { get; set; } = false;
+        public virtual bool DetailedAcc { get; set; } = false;
     }
 }

@@ -95,5 +95,12 @@ namespace MultiplayerInfo.Settings
             get => Configuration.PluginConfig.Instance.ShowAccuracy;
             set => Configuration.PluginConfig.Instance.ShowAccuracy = value;
         }
+
+        [UIValue("DetailedAcc")]
+        public bool DetailedAcc
+        {
+            get => Configuration.PluginConfig.Instance.DetailedAcc;
+            set => Configuration.PluginConfig.Instance.DetailedAcc = value;
+        }
     }
 }
