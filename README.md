@@ -16,8 +16,9 @@ Some username displays make take a while to change after setting a nickname.
 ## How To Install
 - Simply download MultiplayerInfo.dll from [releases](https://github.com/BlqzingIce/MultiplayerInfo/releases) and put it in your Plugins folder!
 - Requires BSIPA, BSML, and SiraUtil (most likely already installed lol)
-- Made for 1.25.0, works on 1.21.0 - 1.25.0
-- Should be compatible with both BeatTogther, MultiplayerCore, and ServerBrowser
+- Should work on any version from 1.21.0 to 1.27.0
+- Should be compatible with both BeatTogther, MultiplayerCore, and ServerBrowser  
+(Multiplayer mods are NOT required by this mod, MultiplayerInfo will work in official multiplayer)
 
 ## Config File
 - The config file can be found at Beat Saber/UserData/MultiplayerInfo.json
@@ -44,7 +45,7 @@ Some username displays make take a while to change after setting a nickname.
 - `ShowScore`: Self explanatory
 - `ShowPercent`: Show percent of total possible score
 - `ShowAccuracy`: Show player's average cut accuracy (out of 115)
-- `DetailedAcc`: If show accuracy is enabled, also display average score from acc and average score from swing
+- `DetailedAcc`: If `ShowAccuracy` is enabled, also display average score from acc and average score from swing
 
 ## Credits
-This started as a port of some features from Quest's ScorePercentage, so big thanks to metal_marmott (aka Polly) as well as Zephyr who's ui code I borrowed from. And as always, thanks to the modding community as a whole.
+This started as a port of some features from Quest's ScorePercentage, so big thanks to metal_marmott (aka Polly) as well as Zephyr who's ui code for JDFixer I borrowed from. And as always, thanks to the modding community as a whole, you guys are cool.
