@@ -46,66 +46,67 @@ namespace MultiplayerInfo.HarmonyPatches
             string score = ____scoreText.text;
             ____scoreText.text = "";
 
-            //to avoid displaying F and NF when everything is disabled
-            if (!Configuration.PluginConfig.Instance.ShowRank && !Configuration.PluginConfig.Instance.ShowCombo && !Configuration.PluginConfig.Instance.ShowMisses &&
-                !Configuration.PluginConfig.Instance.ShowBombs && !Configuration.PluginConfig.Instance.ShowScore && !Configuration.PluginConfig.Instance.ShowPercent &&
-                !Configuration.PluginConfig.Instance.ShowAccuracy) return;
-
-            //completion + rank
-            if (levelCompletionResults.levelEndStateType == LevelCompletionResults.LevelEndStateType.Cleared)
+            //don't do anything if everything is disabled
+            if (Configuration.PluginConfig.Instance.ShowRank || Configuration.PluginConfig.Instance.ShowCombo || Configuration.PluginConfig.Instance.ShowMisses ||
+                Configuration.PluginConfig.Instance.ShowBombs || Configuration.PluginConfig.Instance.ShowScore || Configuration.PluginConfig.Instance.ShowPercent ||
+                Configuration.PluginConfig.Instance.ShowAccuracy)
             {
-                ____scoreText.text += levelCompletionResults.gameplayModifiers.noFailOn0Energy && levelCompletionResults.energy == 0 ? "NF    " : "";
-                ____scoreText.text += Configuration.PluginConfig.Instance.ShowRank ? rank + "    " : "";
-            }
-            else ____scoreText.text += "F    ";
-
-            //combo
-            if (Configuration.PluginConfig.Instance.ShowCombo)
-            {
-                string combo = levelCompletionResults.maxCombo.ToString() + "<size=40%> </size><size=85%>🔄</size>";
-                ____scoreText.text += levelCompletionResults.fullCombo ? "<color=yellow>FC</color>  " + combo + "    " : combo + "    ";
-            }
-
-            //misses
-            if (Configuration.PluginConfig.Instance.ShowMisses)
-            {
-                string misses = (levelCompletionResults.missedCount + levelCompletionResults.badCutsCount).ToString();
-                ____scoreText.text += !levelCompletionResults.fullCombo ? "<color=red>X</color><size=65%> </size>" + misses + "    " : "";
-            }
-
-            //bombs
-            if (Configuration.PluginConfig.Instance.ShowBombs)
-            {
-                ____scoreText.text += !levelCompletionResults.fullCombo ? "<size=65%>💣 </size>" + levelCompletionResults.notGoodCount.ToString() + "    " : "";
-            }
-
-            //score
-            if (Configuration.PluginConfig.Instance.ShowScore)
-            {
-                ____scoreText.text += score + "    ";
-            }
-
-            //percent
-            if (Configuration.PluginConfig.Instance.ShowPercent)
-            {
-                double percent = (double)levelCompletionResults.multipliedScore / BeatmapCallbacksPatch.maxRawScore * 100;
-                if (percent < 0) percent *= -1;
-                ____scoreText.text += BeatmapCallbacksPatch.maxRawScore == -1 ? "??.??%" : percent.ToString("00.00") + "%";
-            }
-
-            //acc
-            if (Configuration.PluginConfig.Instance.ShowAccuracy)
-            {
-                float averageFullScore = levelCompletionResults.averageCutScoreForNotesWithFullScoreScoringType;
-                ____scoreText.text += "<size=80%> (" + averageFullScore.ToString("00.0");
-                if (Configuration.PluginConfig.Instance.DetailedAcc)
+                //completion + rank
+                if (levelCompletionResults.levelEndStateType == LevelCompletionResults.LevelEndStateType.Cleared)
                 {
-                    float averageAccScore = levelCompletionResults.averageCenterDistanceCutScoreForNotesWithFullScoreScoringType;
-                    float averageSwingScore = averageFullScore - averageAccScore;
-                    ____scoreText.text += "|" + averageSwingScore.ToString("00.0") + "+" + averageAccScore.ToString("0.0") + ")</size>";
+                    ____scoreText.text += levelCompletionResults.gameplayModifiers.noFailOn0Energy && levelCompletionResults.energy == 0 ? "NF    " : "";
+                    ____scoreText.text += Configuration.PluginConfig.Instance.ShowRank ? rank + "    " : "";
                 }
-                else
-                    ____scoreText.text += " <size=65%>Avg Cut</size>)</size>";
+                else ____scoreText.text += "F    ";
+
+                //combo
+                if (Configuration.PluginConfig.Instance.ShowCombo)
+                {
+                    string combo = levelCompletionResults.maxCombo.ToString() + "<size=40%> </size><size=85%>🔄</size>";
+                    ____scoreText.text += levelCompletionResults.fullCombo ? "<color=yellow>FC</color>  " + combo + "    " : combo + "    ";
+                }
+
+                //misses
+                if (Configuration.PluginConfig.Instance.ShowMisses)
+                {
+                    string misses = (levelCompletionResults.missedCount + levelCompletionResults.badCutsCount).ToString();
+                    ____scoreText.text += !levelCompletionResults.fullCombo ? "<color=red>X</color><size=65%> </size>" + misses + "    " : "";
+                }
+
+                //bombs
+                if (Configuration.PluginConfig.Instance.ShowBombs)
+                {
+                    ____scoreText.text += !levelCompletionResults.fullCombo ? "<size=65%>💣 </size>" + levelCompletionResults.notGoodCount.ToString() + "    " : "";
+                }
+
+                //score
+                if (Configuration.PluginConfig.Instance.ShowScore)
+                {
+                    ____scoreText.text += score + "    ";
+                }
+
+                //percent
+                if (Configuration.PluginConfig.Instance.ShowPercent)
+                {
+                    double percent = (double)levelCompletionResults.multipliedScore / BeatmapCallbacksPatch.maxRawScore * 100;
+                    if (percent < 0) percent *= -1;
+                    ____scoreText.text += BeatmapCallbacksPatch.maxRawScore == -1 ? "??.??%" : percent.ToString("00.00") + "%";
+                }
+
+                //acc
+                if (Configuration.PluginConfig.Instance.ShowAccuracy)
+                {
+                    float averageFullScore = levelCompletionResults.averageCutScoreForNotesWithFullScoreScoringType;
+                    ____scoreText.text += "<size=80%> (" + averageFullScore.ToString("00.0");
+                    if (Configuration.PluginConfig.Instance.DetailedAcc)
+                    {
+                        float averageAccScore = levelCompletionResults.averageCenterDistanceCutScoreForNotesWithFullScoreScoringType;
+                        float averageSwingScore = averageFullScore - averageAccScore;
+                        ____scoreText.text += "|" + averageSwingScore.ToString("00.0") + "+" + averageAccScore.ToString("0.0") + ")</size>";
+                    }
+                    else
+                        ____scoreText.text += " <size=65%>Avg Cut</size>)</size>";
+                }
             }
         }
     }

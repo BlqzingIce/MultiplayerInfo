@@ -133,6 +133,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UI\MultiplayerInfoMenuInstaller.cs" />
+    <Compile Include="UI\ScoreFlowCoordinator.cs" />
+    <Compile Include="UI\ScoreSettingsViewController.cs" />
     <Compile Include="UI\NicknameListViewController.cs" />
     <Compile Include="UI\NicknameFlowCoordinator.cs" />
     <Compile Include="Configuration\Models.cs" />
@@ -150,6 +152,7 @@
   <ItemGroup>
     <None Include="Directory.Build.props" Condition="Exists('Directory.Build.props')" />
     <None Include="MultiplayerInfo.csproj.user" Condition="Exists('MultiplayerInfo.csproj.user')" />
+    <EmbeddedResource Include="UI\scoresettings.bsml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BeatSaberModdingTools.Tasks">

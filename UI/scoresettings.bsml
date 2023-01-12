@@ -1,0 +1,10 @@
+﻿<settings-container child-control-width='true' child-expand-width='true' size-delta-y='0'>
+	<checkbox-setting text='Show Rank' value='ShowRank' apply-on-change='true' hover-hint='Display rank if the song was finished&#xA;(e.g. SS)'/>
+	<checkbox-setting text='Show Combo' value='ShowCombo' apply-on-change='true' hover-hint='Display max combo, and if it was a full combo&#xA;(e.g. 289 🔄)'/>
+	<checkbox-setting text='Show Misses' value='ShowMisses' apply-on-change='true' hover-hint='If not a full combo, display total misses&#xA;(e.g. X 5)'/>
+	<checkbox-setting text='Show Bombs' value='ShowBombs' apply-on-change='true' hover-hint='If not a full combo, display total bombs hit + walls hit&#xA;(e.g. 💣 1)'/>
+	<checkbox-setting text='Show Score' value='ShowScore' apply-on-change='true' hover-hint='Display score&#xA;(e.g. 678,293)'/>
+	<checkbox-setting text='Show Percent' value='ShowPercent' apply-on-change='true' hover-hint='Display percent of total possible score achieved&#xA;(e.g. 93.14%)'/>
+	<checkbox-setting text='Show Accuracy' value='ShowAccuracy' apply-on-change='true' hover-hint='Display average cut accuracy out of 115 for standard notes&#xA;(e.g. 108.9)'/>
+	<checkbox-setting text='Detailed Accuracy' value='DetailedAcc' apply-on-change='true' hover-hint='If Show Accuracy is enabled, also display average cut score split into score from precision out of 15, and from swing angle out of 100&#xA;(e.g. 99.4 + 9.5)'/>
+</settings-container>

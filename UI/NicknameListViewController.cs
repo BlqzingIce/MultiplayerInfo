@@ -6,7 +6,6 @@ using BeatSaberMarkupLanguage.Parser;
 using System.Collections.Generic;
 using MultiplayerInfo.Models;
 
-//shamelessly stolen from jdfixer
 namespace MultiplayerInfo.Settings
 {
     [HotReload(RelativePathToLayout = @"nicknamelist.bsml")]

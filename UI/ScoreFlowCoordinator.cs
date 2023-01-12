@@ -4,22 +4,22 @@ using Zenject;
 
 namespace MultiplayerInfo.Settings
 {
-    public class NicknameFlowCoordinator : FlowCoordinator
+    public class ScoreFlowCoordinator : FlowCoordinator
     {
         public FlowCoordinator _parentFlow;
-        private NicknameListViewController _nickListView;
+        private ScoreSettingsViewController _scoreSettingsView;
 
         [Inject]
-        public void Construct(NicknameListViewController nicknameListViewController)
+        public void Construct(ScoreSettingsViewController scoreSettingsViewController)
         {
-            _nickListView = nicknameListViewController;
+            _scoreSettingsView = scoreSettingsViewController;
         }
 
         protected override void DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)
         {
             showBackButton = true;
-            SetTitle("Nickname Editor");
-            ProvideInitialViewControllers(_nickListView);
+            SetTitle("Score Settings");
+            ProvideInitialViewControllers(_scoreSettingsView);
         }
 
         protected override void BackButtonWasPressed(ViewController topViewController)

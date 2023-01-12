@@ -10,7 +10,8 @@ namespace MultiplayerInfo.Settings
     public class ModifierUI : IInitializable, IDisposable
 	{
 		private readonly MainFlowCoordinator _mainFlow;
-		private readonly NicknameFlowCoordinator _prefFlow;
+        private readonly ScoreFlowCoordinator _scoreFlow;
+        private readonly NicknameFlowCoordinator _nickFlow;
 
 		public void Initialize()
 		{
@@ -25,82 +26,34 @@ namespace MultiplayerInfo.Settings
 			}
 		}
 
-		public ModifierUI(MainFlowCoordinator mainFlowCoordinator, NicknameFlowCoordinator nicknameFlowCoordinator)
+		public ModifierUI(MainFlowCoordinator mainFlowCoordinator, ScoreFlowCoordinator scoreFlowCoordinator, NicknameFlowCoordinator nicknameFlowCoordinator)
 		{
 			_mainFlow = mainFlowCoordinator;
-			_prefFlow = nicknameFlowCoordinator;
+            _scoreFlow = scoreFlowCoordinator;
+            _nickFlow = nicknameFlowCoordinator;
 		}
+
+        [UIAction("score_button_clicked")]
+        private void Score_Button_Clicked()
+        {
+            FlowCoordinator currentFlow = _mainFlow.YoungestChildFlowCoordinatorOrSelf();
+            _scoreFlow._parentFlow = currentFlow;
+            currentFlow.PresentFlowCoordinator(_scoreFlow);
+        }
+
+        [UIAction("nick_button_clicked")]
+        private void Nick_Button_Clicked()
+        {
+            FlowCoordinator currentFlow = _mainFlow.YoungestChildFlowCoordinatorOrSelf();
+            _nickFlow._parentFlow = currentFlow;
+            currentFlow.PresentFlowCoordinator(_nickFlow);
+        }
 
         [UIValue("EnableNicknames")]
         public bool EnableNicknames
         {
             get => Configuration.PluginConfig.Instance.EnableNicknames;
             set => Configuration.PluginConfig.Instance.EnableNicknames = value;
-        }
-
-        //shamelessly stolen from jdfixer
-        [UIAction("nick_button_clicked")]
-        private void Nick_Button_Clicked()
-        {
-            FlowCoordinator currentFlow = _mainFlow.YoungestChildFlowCoordinatorOrSelf();
-            _prefFlow._parentFlow = currentFlow;
-            currentFlow.PresentFlowCoordinator(_prefFlow);
-        }
-
-		[UIValue("ShowRank")]
-		public bool ShowRank
-		{
-			get => Configuration.PluginConfig.Instance.ShowRank;
-			set => Configuration.PluginConfig.Instance.ShowRank = value;
-		}
-
-        [UIValue("ShowCombo")]
-        public bool ShowCombo
-        {
-            get => Configuration.PluginConfig.Instance.ShowCombo;
-            set => Configuration.PluginConfig.Instance.ShowCombo = value;
-        }
-
-        [UIValue("ShowMisses")]
-        public bool ShowMisses
-        {
-            get => Configuration.PluginConfig.Instance.ShowMisses;
-            set => Configuration.PluginConfig.Instance.ShowMisses = value;
-        }
-
-        [UIValue("ShowBombs")]
-        public bool ShowBombs
-        {
-            get => Configuration.PluginConfig.Instance.ShowBombs;
-            set => Configuration.PluginConfig.Instance.ShowBombs = value;
-        }
-
-        [UIValue("ShowScore")]
-        public bool ShowScore
-        {
-            get => Configuration.PluginConfig.Instance.ShowScore;
-            set => Configuration.PluginConfig.Instance.ShowScore = value;
-        }
-
-        [UIValue("ShowPercent")]
-        public bool ShowPercent
-        {
-            get => Configuration.PluginConfig.Instance.ShowPercent;
-            set => Configuration.PluginConfig.Instance.ShowPercent = value;
-        }
-
-        [UIValue("ShowAccuracy")]
-        public bool ShowAccuracy
-        {
-            get => Configuration.PluginConfig.Instance.ShowAccuracy;
-            set => Configuration.PluginConfig.Instance.ShowAccuracy = value;
-        }
-
-        [UIValue("DetailedAcc")]
-        public bool DetailedAcc
-        {
-            get => Configuration.PluginConfig.Instance.DetailedAcc;
-            set => Configuration.PluginConfig.Instance.DetailedAcc = value;
         }
     }
 }
