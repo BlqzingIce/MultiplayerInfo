@@ -16,7 +16,7 @@ Some username displays make take a while to change after setting a nickname.
 ## How To Install
 - Simply download MultiplayerInfo.dll from [releases](https://github.com/BlqzingIce/MultiplayerInfo/releases) and put it in your Plugins folder!
 - Requires BSIPA, BSML, and SiraUtil (most likely already installed lol)
-- Made for 1.25.0, works on 1.21.0 - 1.25.0
+- Made for 1.27.0, might work on 1.21.0 - 1.26.0
 - Should be compatible with both BeatTogther, MultiplayerCore, and ServerBrowser
 
 ## Config File
@@ -44,6 +44,7 @@ Some username displays make take a while to change after setting a nickname.
 - `ShowScore`: Self explanatory
 - `ShowPercent`: Show percent of total possible score
 - `ShowAccuracy`: Show player's average cut accuracy (out of 115)
+- `PercentAcc`: If show accuracy is enabled, display average cut accuracy as a percent instead of out of 115
 - `DetailedAcc`: If show accuracy is enabled, also display average score from acc and average score from swing
 
 ## Credits

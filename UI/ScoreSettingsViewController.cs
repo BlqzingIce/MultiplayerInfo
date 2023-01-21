@@ -56,6 +56,13 @@ namespace MultiplayerInfo.Settings
             set => Configuration.PluginConfig.Instance.ShowAccuracy = value;
         }
 
+        [UIValue("PercentAcc")]
+        public bool PercentAcc
+        {
+            get => Configuration.PluginConfig.Instance.PercentAcc;
+            set => Configuration.PluginConfig.Instance.PercentAcc = value;
+        }
+
         [UIValue("DetailedAcc")]
         public bool DetailedAcc
         {

@@ -96,16 +96,24 @@ namespace MultiplayerInfo.HarmonyPatches
                 //acc
                 if (Configuration.PluginConfig.Instance.ShowAccuracy)
                 {
+                    ____scoreText.text += "<size=80%> (";
                     float averageFullScore = levelCompletionResults.averageCutScoreForNotesWithFullScoreScoringType;
-                    ____scoreText.text += "<size=80%> (" + averageFullScore.ToString("00.0");
+                    if (!Configuration.PluginConfig.Instance.PercentAcc)
+                        ____scoreText.text += averageFullScore.ToString("00.0");
+                    else
+                    {
+                        ____scoreText.text += (averageFullScore/1.15).ToString("00.00") + "%";
+                    }
                     if (Configuration.PluginConfig.Instance.DetailedAcc)
                     {
                         float averageAccScore = levelCompletionResults.averageCenterDistanceCutScoreForNotesWithFullScoreScoringType;
                         float averageSwingScore = averageFullScore - averageAccScore;
                         ____scoreText.text += "|" + averageSwingScore.ToString("00.0") + "+" + averageAccScore.ToString("0.0") + ")</size>";
                     }
-                    else
+                    else if (!Configuration.PluginConfig.Instance.PercentAcc)
                         ____scoreText.text += " <size=65%>Avg Cut</size>)</size>";
+                    else
+                        ____scoreText.text += ")</size>";
                 }
             }
         }
