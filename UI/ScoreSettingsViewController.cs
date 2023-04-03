@@ -1,7 +1,7 @@
 ﻿using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.ViewControllers;
 
-namespace MultiplayerInfo.Settings
+namespace MultiplayerInfo.UI
 {
     [HotReload(RelativePathToLayout = @"scoresettings.bsml")]
     [ViewDefinition("MultiplayerInfo.UI.scoresettings.bsml")]
@@ -10,64 +10,64 @@ namespace MultiplayerInfo.Settings
         [UIValue("ShowRank")]
         public bool ShowRank
         {
-            get => Configuration.PluginConfig.Instance.ShowRank;
-            set => Configuration.PluginConfig.Instance.ShowRank = value;
+            get => Plugin.Config.ShowRank;
+            set => Plugin.Config.ShowRank = value;
         }
 
         [UIValue("ShowCombo")]
         public bool ShowCombo
         {
-            get => Configuration.PluginConfig.Instance.ShowCombo;
-            set => Configuration.PluginConfig.Instance.ShowCombo = value;
+            get => Plugin.Config.ShowCombo;
+            set => Plugin.Config.ShowCombo = value;
         }
 
         [UIValue("ShowMisses")]
         public bool ShowMisses
         {
-            get => Configuration.PluginConfig.Instance.ShowMisses;
-            set => Configuration.PluginConfig.Instance.ShowMisses = value;
+            get => Plugin.Config.ShowMisses;
+            set => Plugin.Config.ShowMisses = value;
         }
 
         [UIValue("ShowBombs")]
         public bool ShowBombs
         {
-            get => Configuration.PluginConfig.Instance.ShowBombs;
-            set => Configuration.PluginConfig.Instance.ShowBombs = value;
+            get => Plugin.Config.ShowBombs;
+            set => Plugin.Config.ShowBombs = value;
         }
 
         [UIValue("ShowScore")]
         public bool ShowScore
         {
-            get => Configuration.PluginConfig.Instance.ShowScore;
-            set => Configuration.PluginConfig.Instance.ShowScore = value;
+            get => Plugin.Config.ShowScore;
+            set => Plugin.Config.ShowScore = value;
         }
 
         [UIValue("ShowPercent")]
         public bool ShowPercent
         {
-            get => Configuration.PluginConfig.Instance.ShowPercent;
-            set => Configuration.PluginConfig.Instance.ShowPercent = value;
+            get => Plugin.Config.ShowPercent;
+            set => Plugin.Config.ShowPercent = value;
         }
 
         [UIValue("ShowAccuracy")]
         public bool ShowAccuracy
         {
-            get => Configuration.PluginConfig.Instance.ShowAccuracy;
-            set => Configuration.PluginConfig.Instance.ShowAccuracy = value;
+            get => Plugin.Config.ShowAccuracy;
+            set => Plugin.Config.ShowAccuracy = value;
         }
 
         [UIValue("PercentAcc")]
         public bool PercentAcc
         {
-            get => Configuration.PluginConfig.Instance.PercentAcc;
-            set => Configuration.PluginConfig.Instance.PercentAcc = value;
+            get => Plugin.Config.PercentAcc;
+            set => Plugin.Config.PercentAcc = value;
         }
 
         [UIValue("DetailedAcc")]
         public bool DetailedAcc
         {
-            get => Configuration.PluginConfig.Instance.DetailedAcc;
-            set => Configuration.PluginConfig.Instance.DetailedAcc = value;
+            get => Plugin.Config.DetailedAcc;
+            set => Plugin.Config.DetailedAcc = value;
         }
 
         protected override void DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)

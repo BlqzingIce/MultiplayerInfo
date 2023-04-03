@@ -5,7 +5,7 @@ using HMUI;
 using Zenject;
 using System;
 
-namespace MultiplayerInfo.Settings
+namespace MultiplayerInfo.UI
 {
     public class ModifierUI : IInitializable, IDisposable
 	{
@@ -52,8 +52,8 @@ namespace MultiplayerInfo.Settings
         [UIValue("EnableNicknames")]
         public bool EnableNicknames
         {
-            get => Configuration.PluginConfig.Instance.EnableNicknames;
-            set => Configuration.PluginConfig.Instance.EnableNicknames = value;
+            get => Plugin.Config.EnableNicknames;
+            set => Plugin.Config.EnableNicknames = value;
         }
     }
 }

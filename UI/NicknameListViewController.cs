@@ -6,32 +6,32 @@ using BeatSaberMarkupLanguage.Parser;
 using System.Collections.Generic;
 using MultiplayerInfo.Models;
 
-namespace MultiplayerInfo.Settings
+namespace MultiplayerInfo.UI
 {
     [HotReload(RelativePathToLayout = @"nicknamelist.bsml")]
     [ViewDefinition("MultiplayerInfo.UI.nicknamelist.bsml")]
     public class NicknameListViewController : BSMLAutomaticViewController
     {
         [UIParams]
-        private BSMLParserParams parserParams;
+        private readonly BSMLParserParams parserParams = null!;
 
         [UIComponent("nick_list")]
         public CustomListTableData nickList;
-        private Nicknames _selectedNick = null;
+        private Nickname _selectedNick = null;
 
         [UIAction("select_nick")]
         private void Select_Nick(TableView tableView, int row)
         {
-            _selectedNick = Configuration.PluginConfig.Instance.NicknamesList[row];
+            _selectedNick = Plugin.Config.Nicknames[row];
         }
 
 
 
-        private List<Player> Players = new List<Player>();
+        private List<BasicPlayer> Players = new List<BasicPlayer>();
 
         [UIComponent("player_list")]
         public CustomListTableData playerList;
-        private Player _selectedPlayer = null;
+        private BasicPlayer _selectedPlayer = null;
 
         [UIAction("select_player")]
         private void Select_Player(TableView tableView, int row)
@@ -57,7 +57,7 @@ namespace MultiplayerInfo.Settings
             {
                 return;
             }
-            Configuration.PluginConfig.Instance.NicknamesList.Add(new Nicknames(_selectedPlayer.PlayerID, _selectedPlayer.PlayerName, _selectedPlayer.PlayerName));
+            Plugin.Config.Nicknames.Add(new Nickname(_selectedPlayer.Id, _selectedPlayer.Name, _selectedPlayer.Name));
             Reload_List_From_Config();
             parserParams.EmitEvent("closeModals");
         }
@@ -71,7 +71,7 @@ namespace MultiplayerInfo.Settings
             {
                 return;
             }
-            nickname = _selectedNick.NickName;
+            nickname = _selectedNick.Nick;
             parserParams.EmitEvent("open_keyboard");
         }
 
@@ -81,11 +81,11 @@ namespace MultiplayerInfo.Settings
         [UIAction("keyboard_enter")]
         private void Keyboard_Enter(string text)
         {
-            foreach (Nicknames nickname in Configuration.PluginConfig.Instance.NicknamesList)
+            foreach (Nickname nickname in Plugin.Config.Nicknames)
             {
-                if (nickname.PlayerID == _selectedNick.PlayerID)
+                if (nickname.PlayerId == _selectedNick.PlayerId)
                 {
-                    nickname.NickName = text;
+                    nickname.Nick = text;
                     break;
                 }
             }
@@ -101,7 +101,7 @@ namespace MultiplayerInfo.Settings
             {
                 return;
             }
-            Configuration.PluginConfig.Instance.NicknamesList.Remove(_selectedNick);
+            Plugin.Config.Nicknames.Remove(_selectedNick);
             Reload_List_From_Config();
             Reload_Unnicked_Player_List();
         }
@@ -112,14 +112,14 @@ namespace MultiplayerInfo.Settings
         {
             nickList.data.Clear();
 
-            if (Configuration.PluginConfig.Instance.NicknamesList == null)
+            if (Plugin.Config.Nicknames == null)
             {
                 return;
             }
 
-            foreach (var nick in Configuration.PluginConfig.Instance.NicknamesList)
+            foreach (var nick in Plugin.Config.Nicknames)
             {
-                nickList.data.Add(new CustomListTableData.CustomCellInfo($"{nick.NickName} ({nick.PlayerName})"));
+                nickList.data.Add(new CustomListTableData.CustomCellInfo($"{nick.Nick} ({nick.Name})"));
             }
 
             nickList.tableView.ReloadData();
@@ -130,16 +130,16 @@ namespace MultiplayerInfo.Settings
         private void Reload_Unnicked_Player_List()
         {
             Players.Clear();
-            foreach (Player player in HarmonyPatches.ServerPlayerTableViewPatch.playerList)
+            foreach (BasicPlayer player in Patches.ServerPlayerTableViewPatch.playerList)
             {
                 Players.Add(player);
             }
 
             for (int i = 0; i < Players.Count; i++)
             {
-                foreach (Nicknames nickname in Configuration.PluginConfig.Instance.NicknamesList)
+                foreach (Nickname nickname in Plugin.Config.Nicknames)
                 {
-                    if (nickname.PlayerName == Players[i].PlayerName)
+                    if (nickname.Name == Players[i].Name)
                     {
                         Players.RemoveAt(i);
                         i--;
@@ -153,7 +153,7 @@ namespace MultiplayerInfo.Settings
             {
                 foreach (var player in Players)
                 {
-                    playerList.data.Add(new CustomListTableData.CustomCellInfo($"{player.PlayerName}"));
+                    playerList.data.Add(new CustomListTableData.CustomCellInfo($"{player.Name}"));
                 }
             }
 
