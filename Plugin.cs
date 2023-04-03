@@ -1,45 +1,30 @@
-﻿using HarmonyLib;
-using IPA;
-using IPA.Config;
+﻿using IPA;
 using IPA.Config.Stores;
-using IPALogger = IPA.Logging.Logger;
 using SiraUtil.Zenject;
+using IPALogger = IPA.Logging.Logger;
 using MultiplayerInfo.Installers;
+using MultiplayerInfo.Patches;
 
 namespace MultiplayerInfo
 {
     [Plugin(RuntimeOptions.SingleStartInit)]
     public class Plugin
     {
-        public static Harmony harmony;
-
-        internal static Plugin Instance { get; private set; }
-        internal static IPALogger Log { get; private set; }
+        internal static PluginConfig Config { get; private set; } = null!;
+        private IPALogger _log = null!;
 
         [Init]
-        public void Init(IPALogger logger, Config conf, Zenjector zenjector)
+        public void Init(IPALogger logger, Zenjector zenjector, IPA.Config.Config config)
         {
-            Instance = this;
-            Log = logger;
-            Log.Debug("MultiplayerInfo initialized.");
+            _log = logger;
 
-            Configuration.PluginConfig.Instance = conf.Generated<Configuration.PluginConfig>();
-            Log.Debug("Config loaded");
+            Config = config.Generated<PluginConfig>();
 
+            zenjector.UseMetadataBinder<Plugin>();
+            zenjector.UseLogger(logger);
+
+            zenjector.Install<MultiplayerInfoAppInstaller>(Location.App);
             zenjector.Install<MultiplayerInfoMenuInstaller>(Location.Menu);
-        }
-
-        [OnStart]
-        public void OnApplicationStart()
-        {
-            harmony = new Harmony("com.BlqzingIce.BeatSaber.MultiplayerInfo");
-            harmony.PatchAll(System.Reflection.Assembly.GetExecutingAssembly());
-        }
-
-        [OnExit]
-        public void OnApplicationQuit()
-        {
-            harmony.UnpatchSelf();
         }
     }
 }

@@ -3,12 +3,13 @@
   "id": "MultiplayerInfo",
   "name": "MultiplayerInfo",
   "author": "BlqzingIce",
-  "version": "1.2.0",
-  "description": "",
-  "gameVersion": "1.27.0",
+  "version": "2.0.0",
+  "description": "Extra stats and info in multiplayer",
+  "gameVersion": "1.28.0",
   "dependsOn": {
-    "BeatSaberMarkupLanguage": "^1.6.8",
     "BSIPA": "^4.2.2",
-    "SiraUtil": "^3.1.2"
+    "BeatSaberMarkupLanguage": "^1.6.8",
+    "SiraUtil": "^3.1.2",
+    "BS Utils": "^1.2.2"
   }
 }
