@@ -19,7 +19,6 @@ namespace MultiplayerInfo.Patches
                 maxScore = ScoreModel.ComputeMaxMultipliedScoreForBeatmap(BS_Utils.Plugin.LevelData.GameplayCoreSceneSetupData.transformedBeatmapData);
             }
             else maxScore = -1;
-            _log.Info("maxScore set to " + maxScore);
         }
     }
 }
