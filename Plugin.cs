@@ -3,11 +3,10 @@ using IPA.Config.Stores;
 using SiraUtil.Zenject;
 using IPALogger = IPA.Logging.Logger;
 using MultiplayerInfo.Installers;
-using MultiplayerInfo.Patches;
 
 namespace MultiplayerInfo
 {
-    [Plugin(RuntimeOptions.SingleStartInit)]
+    [Plugin(RuntimeOptions.SingleStartInit), NoEnableDisable]
     public class Plugin
     {
         internal static PluginConfig Config { get; private set; } = null!;
