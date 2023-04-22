@@ -1,23 +1,24 @@
 ﻿using SiraUtil.Affinity;
 using Zenject;
+using TMPro;
 
 namespace MultiplayerInfo.Patches
 {
-    internal class ConnectedPlayerNamePatch : IAffinity
+    internal class MultiplayerLeaderboardPatch : IAffinity
     {
         [Inject] PluginConfig _config;
 
         [AffinityPostfix]
-        [AffinityPatch(typeof(ConnectedPlayerName), nameof(ConnectedPlayerName.Start))]
-        private void Postfix(IConnectedPlayer ____connectedPlayer, TMPro.TextMeshProUGUI ____nameText)
+        [AffinityPatch(typeof(MultiplayerLeaderboardPanelItem), nameof(MultiplayerLeaderboardPanelItem.SetData))]
+        private void Postfix(string playerName, TextMeshProUGUI ____playerNameText)
         {
             if (_config.EnableNicknames)
             {
                 for (int i = _config.Nicknames.Count - 1; i >= 0; i--)
                 {
-                    if (_config.Nicknames[i].PlayerId.Equals(____connectedPlayer.userId))
+                    if (_config.Nicknames[i].Name.Equals(playerName))
                     {
-                        ____nameText.text = _config.Nicknames[i].Nick;
+                        ____playerNameText.text = _config.Nicknames[i].Nick;
                         break;
                     }
                 }

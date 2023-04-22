@@ -157,6 +157,8 @@
   <ItemGroup>
     <Compile Include="Patches\MultiplayerLevelScenesTransitionPatch.cs" />
     <Compile Include="Patches\ResultsCellPatch.cs" />
+    <Compile Include="Patches\MultiplayerLeaderboardPatch.cs" />
+    <Compile Include="Patches\SpectatingSpotPatch.cs" />
     <Compile Include="Patches\SongStartPatch.cs" />
     <Compile Include="Patches\ScoreRingPatch.cs" />
     <Compile Include="Patches\ConnectedPlayerNamePatch.cs" />
@@ -184,6 +186,7 @@
   <ItemGroup>
     <None Include="Directory.Build.props" Condition="Exists('Directory.Build.props')" />
     <None Include="MultiplayerInfo.csproj.user" Condition="Exists('MultiplayerInfo.csproj.user')" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BeatSaberModdingTools.Tasks">

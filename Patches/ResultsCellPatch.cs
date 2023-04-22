@@ -1,4 +1,5 @@
 ﻿using SiraUtil.Affinity;
+using System;
 using Zenject;
 
 namespace MultiplayerInfo.Patches
@@ -17,7 +18,7 @@ namespace MultiplayerInfo.Patches
                 {
                     if (_config.Nicknames[i].PlayerId.Equals(connectedPlayer.userId))
                     {
-                        ____nameText.text = _config.Nicknames[i].Name;
+                        ____nameText.text = _config.Nicknames[i].Nick;
                         break;
                     }
                 }
@@ -81,6 +82,7 @@ namespace MultiplayerInfo.Patches
                     if (SongStartPatch.maxScore != -1)
                     {
                         double percent = (double)levelCompletionResults.multipliedScore / SongStartPatch.maxScore * 100;
+                        percent = Math.Abs(percent);
                         ____scoreText.text += percent.ToString("00.00") + "%";
                     }
                     else ____scoreText.text += "??.??%";

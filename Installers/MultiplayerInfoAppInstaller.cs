@@ -15,6 +15,8 @@ namespace MultiplayerInfo.Installers
             Container.BindInterfacesTo<ServerPlayerTableCellPatch>().AsSingle();
             Container.BindInterfacesTo<ServerPlayerTableViewPatch>().AsSingle();
             Container.BindInterfacesTo<SongStartPatch>().AsSingle();
+            Container.BindInterfacesTo<MultiplayerLeaderboardPatch>().AsSingle();
+            Container.BindInterfacesTo<SpectatingSpotPatch>().AsSingle();
         }
     }
 }

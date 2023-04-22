@@ -1,13 +1,10 @@
 ﻿using SiraUtil.Affinity;
-using SiraUtil.Logging;
 using Zenject;
 
 namespace MultiplayerInfo.Patches
 {
     internal class SongStartPatch : IAffinity
     {
-        [Inject] private readonly SiraLog _log = null!;
-
         public static int maxScore = -1;
 
         [AffinityPostfix]

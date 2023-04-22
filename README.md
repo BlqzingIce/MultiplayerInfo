@@ -16,7 +16,7 @@ Some username displays make take a while to change after setting a nickname.
 ## How To Install
 - Simply download MultiplayerInfo.dll from [releases](https://github.com/BlqzingIce/MultiplayerInfo/releases) and put it in your Plugins folder!
 - Requires BSIPA, BSML, SiraUtil and BS_Utils (most likely already installed lol)
-- Made for 1.28.0, might work on 1.21.0 - 1.27.0
+- Tested on 1.28.0 and 1.29.0, might work on 1.21.0 - 1.27.0
 - Should be compatible with both BeatTogther, MultiplayerCore, and ServerBrowser
 
 ## Config File

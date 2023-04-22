@@ -14,13 +14,13 @@ namespace MultiplayerInfo.Patches
         {
             if (_config.EnableNicknames)
             {
-                foreach (IConnectedPlayer allActivePlayer in ____allActivePlayers)
+                foreach (IConnectedPlayer player in ____allActivePlayers)
                 {
                     for (int i = _config.Nicknames.Count - 1; i >= 0; i--)
                     {
-                        if (_config.Nicknames[i].PlayerId.Equals(allActivePlayer.userId))
+                        if (_config.Nicknames[i].PlayerId.Equals(player.userId))
                         {
-                            ____scoreRingItems[allActivePlayer.userId].SetName(_config.Nicknames[i].Name);
+                            ____scoreRingItems[player.userId].SetName(_config.Nicknames[i].Nick);
                             break;
                         }
                     }
