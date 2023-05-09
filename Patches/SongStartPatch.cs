@@ -1,5 +1,4 @@
 ﻿using SiraUtil.Affinity;
-using Zenject;
 
 namespace MultiplayerInfo.Patches
 {

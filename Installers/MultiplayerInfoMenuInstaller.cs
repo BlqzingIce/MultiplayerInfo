@@ -1,6 +1,6 @@
-﻿using Zenject;
+﻿using MultiplayerInfo.Patches;
 using MultiplayerInfo.UI;
-using MultiplayerInfo.Patches;
+using Zenject;
 
 namespace MultiplayerInfo.Installers
 {
@@ -15,6 +15,9 @@ namespace MultiplayerInfo.Installers
 
             Container.Bind<ScoreFlowCoordinator>().FromNewComponentOnNewGameObject().AsSingle();
             Container.Bind<ScoreSettingsViewController>().FromNewComponentAsViewController().AsSingle();
+
+            Container.Bind<RankFlowCoordinator>().FromNewComponentOnNewGameObject().AsSingle();
+            Container.Bind<RankListViewController>().FromNewComponentAsViewController().AsSingle();
 
             Container.BindInterfacesTo<MultiplayerLevelScenesTransitionPatch>().AsSingle();
         }

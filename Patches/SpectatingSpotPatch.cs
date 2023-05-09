@@ -1,12 +1,11 @@
 ﻿using SiraUtil.Affinity;
 using Zenject;
-using System.Collections.Generic;
 
 namespace MultiplayerInfo.Patches
 {
     internal class SpectatingSpotPatch : IAffinity
     {
-        [Inject] PluginConfig _config;
+        [Inject] PluginConfig _config = null!;
 
         [AffinityPostfix]
         [AffinityPatch(typeof(MultiplayerSpectatingSpotPickerViewController), nameof(MultiplayerSpectatingSpotPickerViewController.RefreshSpectatingSpotName))]

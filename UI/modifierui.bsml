@@ -1,8 +1,15 @@
 ﻿<settings-container child-control-width='true' child-expand-width='true' size-delta-y='0'>
 	<horizontal preferred-width="80" child-control-width="true" />
 	<horizontal>
-		<button text='Open Score Settings' on-click='score_button_clicked' hover-hint='Change what score info you see on the results table'></button>
-		<button text='Open Nickname Editor' on-click='nick_button_clicked' hover-hint='Edit existing nicknames or add new ones for players currently in the lobby'></button>
+		<vertical spacing='1'>
+			<checkbox-setting preferred-width="50" text='Enable Score Info' value='EnableScoreInfo' apply-on-change='true' hover-hint='Enables custom info on the results table'/>
+			<checkbox-setting preferred-width="50" text='Enable Nicknames' value='EnableNicknames' apply-on-change='true' hover-hint='Enables nickname functionality&#xA;(displays will update once reloaded)'/>
+			<checkbox-setting preferred-width="50" text='Enable Rank Info' value='EnableRankInfo' apply-on-change='true' hover-hint='Enables collecting of player ranks&#xA;(disconnecting and reconnecting from the lobby will load ranks if the setting was previously disabled)'/>
+		</vertical>
+		<vertical spacing='1'>
+			<button text='Open Score Settings' on-click='score_button_clicked' hover-hint='Change what score info you see on the results table'></button>
+			<button text='Open Nickname Editor' on-click='nick_button_clicked' hover-hint='Edit existing nicknames or add new ones for players currently in your lobby'></button>
+			<button text='Open Rank Display' on-click='rank_button_clicked' hover-hint='View the known ScoreSaber and BeatLeader ranks for players currently in your lobby'></button>
+		</vertical>
 	</horizontal>
-	<checkbox-setting text='Enable Nicknames' value='EnableNicknames' apply-on-change='true' hover-hint='Toggles nickname functionality'/>
 </settings-container>

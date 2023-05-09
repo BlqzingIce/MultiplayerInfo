@@ -1,17 +1,14 @@
 ﻿using IPA.Config.Stores.Attributes;
 using IPA.Config.Stores.Converters;
-using System.Collections.Generic;
 using MultiplayerInfo.Models;
+using System.Collections.Generic;
 
 namespace MultiplayerInfo
 {
     public class PluginConfig
     {
-        public virtual bool EnableNicknames { get; set; } = false;
-
-        [UseConverter(typeof(ListConverter<Nickname>))]
-        public virtual List<Nickname> Nicknames { get; set; } = new List<Nickname>();
-
+        public virtual bool EnableScoreInfo { get; set; } = true;
+        public virtual bool ShowOrder { get; set; } = true;
         public virtual bool ShowRank { get; set; } = true;
         public virtual bool ShowCombo { get; set; } = false;
         public virtual bool ShowMisses { get; set; } = true;
@@ -21,5 +18,11 @@ namespace MultiplayerInfo
         public virtual bool ShowAccuracy { get; set; } = false;
         public virtual bool PercentAcc { get; set; } = false;
         public virtual bool DetailedAcc { get; set; } = false;
+
+        public virtual bool EnableNicknames { get; set; } = true;
+        [UseConverter(typeof(ListConverter<Nickname>))]
+        public virtual List<Nickname> Nicknames { get; set; } = new List<Nickname>();
+
+        public virtual bool EnableRankInfo { get; set; } = true;
     }
 }

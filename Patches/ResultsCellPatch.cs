@@ -6,11 +6,11 @@ namespace MultiplayerInfo.Patches
 {
     internal class ResultsCellPatch : IAffinity
     {
-        [Inject] PluginConfig _config;
+        [Inject] private readonly PluginConfig _config = null!;
 
         [AffinityPostfix]
         [AffinityPatch(typeof(ResultsTableCell), nameof(ResultsTableCell.SetData))]
-        private void Postfix(IConnectedPlayer connectedPlayer, LevelCompletionResults levelCompletionResults, TMPro.TextMeshProUGUI ____rankText, TMPro.TextMeshProUGUI ____scoreText, TMPro.TextMeshProUGUI ____nameText)
+        private void Postfix(IConnectedPlayer connectedPlayer, LevelCompletionResults levelCompletionResults, TMPro.TextMeshProUGUI ____orderText, TMPro.TextMeshProUGUI ____rankText, TMPro.TextMeshProUGUI ____scoreText, TMPro.TextMeshProUGUI ____nameText)
         {
             if (_config.EnableNicknames)
             {
@@ -24,6 +24,9 @@ namespace MultiplayerInfo.Patches
                 }
             }
 
+            if (!_config.EnableScoreInfo)
+                return;
+
             if (____scoreText.richText == false)
             {
                 ____scoreText.enableWordWrapping = false;
@@ -36,6 +39,9 @@ namespace MultiplayerInfo.Patches
 
             string score = ____scoreText.text;
             ____scoreText.text = "";
+
+            if (!_config.ShowOrder)
+                ____orderText.text = "";
 
             //don't do anything if everything is disabled
             if (_config.ShowRank || _config.ShowCombo || _config.ShowMisses ||

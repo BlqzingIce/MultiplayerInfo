@@ -1,6 +1,5 @@
 ﻿using BeatSaberMarkupLanguage;
 using HMUI;
-using SiraUtil.Logging;
 using Zenject;
 
 namespace MultiplayerInfo.UI
@@ -9,8 +8,8 @@ namespace MultiplayerInfo.UI
     {
         bool visible = false;
 
-        public FlowCoordinator _parentFlow;
-        private ScoreSettingsViewController _scoreSettingsView;
+        public FlowCoordinator _parentFlow = null!;
+        private ScoreSettingsViewController _scoreSettingsView = null!;
 
         [Inject]
         public void Construct(ScoreSettingsViewController scoreSettingsViewController)

@@ -7,6 +7,13 @@ namespace MultiplayerInfo.UI
     [ViewDefinition("MultiplayerInfo.UI.scoresettings.bsml")]
     public class ScoreSettingsViewController : BSMLAutomaticViewController
     {
+        [UIValue("ShowOrder")]
+        public bool ShowOrder
+        {
+            get => Plugin.Config.ShowOrder;
+            set => Plugin.Config.ShowOrder = value;
+        }
+
         [UIValue("ShowRank")]
         public bool ShowRank
         {

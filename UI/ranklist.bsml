@@ -1,0 +1,5 @@
+﻿<bg anchor-pos-y="0">
+  <vertical>
+    <list id="rank_list" list-style="Simple" select-cell="select_rank" stick-scrolling="true" show-scrollbar="true" />
+  </vertical>
+</bg>

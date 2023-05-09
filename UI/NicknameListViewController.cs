@@ -1,10 +1,10 @@
-﻿using HMUI;
-using BeatSaberMarkupLanguage.Attributes;
+﻿using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.Components;
-using BeatSaberMarkupLanguage.ViewControllers;
 using BeatSaberMarkupLanguage.Parser;
-using System.Collections.Generic;
+using BeatSaberMarkupLanguage.ViewControllers;
+using HMUI;
 using MultiplayerInfo.Models;
+using System.Collections.Generic;
 
 namespace MultiplayerInfo.UI
 {
@@ -130,7 +130,7 @@ namespace MultiplayerInfo.UI
         private void Reload_Unnicked_Player_List()
         {
             Players.Clear();
-            foreach (BasicPlayer player in Patches.ServerPlayerTableViewPatch.playerList)
+            foreach (BasicPlayer player in Rank.PlayerHandler.currentPlayerList)
             {
                 Players.Add(player);
             }

@@ -1,12 +1,12 @@
 ﻿using SiraUtil.Affinity;
-using Zenject;
 using TMPro;
+using Zenject;
 
 namespace MultiplayerInfo.Patches
 {
     internal class MultiplayerLeaderboardPatch : IAffinity
     {
-        [Inject] PluginConfig _config;
+        [Inject] PluginConfig _config = null!;
 
         [AffinityPostfix]
         [AffinityPatch(typeof(MultiplayerLeaderboardPanelItem), nameof(MultiplayerLeaderboardPanelItem.SetData))]

@@ -1,12 +1,12 @@
 ﻿using SiraUtil.Affinity;
-using Zenject;
 using System.Collections.Generic;
+using Zenject;
 
 namespace MultiplayerInfo.Patches
 {
     internal class ScoreRingPatch : IAffinity
     {
-        [Inject] PluginConfig _config;
+        [Inject] PluginConfig _config = null!;
 
         [AffinityPostfix]
         [AffinityPatch(typeof(MultiplayerScoreRingManager), nameof(MultiplayerScoreRingManager.SpawnTexts))]

@@ -1,4 +1,5 @@
 ﻿using MultiplayerInfo.Patches;
+using MultiplayerInfo.Rank;
 using Zenject;
 
 namespace MultiplayerInfo.Installers
@@ -13,10 +14,17 @@ namespace MultiplayerInfo.Installers
             Container.BindInterfacesTo<ResultsCellPatch>().AsSingle();
             Container.BindInterfacesTo<ScoreRingPatch>().AsSingle();
             Container.BindInterfacesTo<ServerPlayerTableCellPatch>().AsSingle();
-            Container.BindInterfacesTo<ServerPlayerTableViewPatch>().AsSingle();
             Container.BindInterfacesTo<SongStartPatch>().AsSingle();
             Container.BindInterfacesTo<MultiplayerLeaderboardPatch>().AsSingle();
             Container.BindInterfacesTo<SpectatingSpotPatch>().AsSingle();
+
+            Container.BindInterfacesAndSelfTo<PlayerHandler>().AsSingle();
+
+            if (Plugin.MpCoreEnabled)
+            {
+                Container.BindInterfacesTo<MpPlayerPatch>().AsSingle();
+                Container.BindInterfacesAndSelfTo<RankGetter>().AsSingle();
+            }
         }
     }
 }

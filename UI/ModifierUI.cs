@@ -2,8 +2,8 @@
 using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.GameplaySetup;
 using HMUI;
-using Zenject;
 using System;
+using Zenject;
 
 namespace MultiplayerInfo.UI
 {
@@ -12,8 +12,9 @@ namespace MultiplayerInfo.UI
 		private readonly MainFlowCoordinator _mainFlow;
         private readonly ScoreFlowCoordinator _scoreFlow;
         private readonly NicknameFlowCoordinator _nickFlow;
+        private readonly RankFlowCoordinator _rankFlow;
 
-		public void Initialize()
+        public void Initialize()
 		{
 			GameplaySetup.instance.AddTab("MultiplayerInfo", "MultiplayerInfo.UI.modifierui.bsml", this, MenuType.Online);
 		}
@@ -26,12 +27,20 @@ namespace MultiplayerInfo.UI
 			}
 		}
 
-		public ModifierUI(MainFlowCoordinator mainFlowCoordinator, ScoreFlowCoordinator scoreFlowCoordinator, NicknameFlowCoordinator nicknameFlowCoordinator)
+		public ModifierUI(MainFlowCoordinator mainFlowCoordinator, ScoreFlowCoordinator scoreFlowCoordinator, NicknameFlowCoordinator nicknameFlowCoordinator, RankFlowCoordinator rankFlowCoordinator)
 		{
 			_mainFlow = mainFlowCoordinator;
             _scoreFlow = scoreFlowCoordinator;
             _nickFlow = nicknameFlowCoordinator;
-		}
+            _rankFlow = rankFlowCoordinator;
+        }
+
+        [UIValue("EnableScoreInfo")]
+        public bool EnableScoreInfo
+        {
+            get => Plugin.Config.EnableScoreInfo;
+            set => Plugin.Config.EnableScoreInfo = value;
+        }
 
         [UIAction("score_button_clicked")]
         private void Score_Button_Clicked()
@@ -39,6 +48,13 @@ namespace MultiplayerInfo.UI
             FlowCoordinator currentFlow = _mainFlow.YoungestChildFlowCoordinatorOrSelf();
             _scoreFlow._parentFlow = currentFlow;
             currentFlow.PresentFlowCoordinator(_scoreFlow);
+        }
+
+        [UIValue("EnableNicknames")]
+        public bool EnableNicknames
+        {
+            get => Plugin.Config.EnableNicknames;
+            set => Plugin.Config.EnableNicknames = value;
         }
 
         [UIAction("nick_button_clicked")]
@@ -49,11 +65,19 @@ namespace MultiplayerInfo.UI
             currentFlow.PresentFlowCoordinator(_nickFlow);
         }
 
-        [UIValue("EnableNicknames")]
-        public bool EnableNicknames
+        [UIValue("EnableRankInfo")]
+        public bool EnableRankInfo
         {
-            get => Plugin.Config.EnableNicknames;
-            set => Plugin.Config.EnableNicknames = value;
+            get => Plugin.Config.EnableRankInfo;
+            set => Plugin.Config.EnableRankInfo = value;
+        }
+
+        [UIAction("rank_button_clicked")]
+        private void Rank_Button_Clicked()
+        {
+            FlowCoordinator currentFlow = _mainFlow.YoungestChildFlowCoordinatorOrSelf();
+            _rankFlow._parentFlow = currentFlow;
+            currentFlow.PresentFlowCoordinator(_rankFlow);
         }
     }
 }

@@ -4,17 +4,17 @@ using Zenject;
 
 namespace MultiplayerInfo.UI
 {
-    public class NicknameFlowCoordinator : FlowCoordinator
+    public class RankFlowCoordinator : FlowCoordinator
     {
         bool visible = false;
 
         public FlowCoordinator _parentFlow = null!;
-        private NicknameListViewController _nickListView = null!;
+        private RankListViewController _rankListView = null!;
 
         [Inject]
-        public void Construct(NicknameListViewController nicknameListViewController)
+        public void Construct(RankListViewController rankListViewController)
         {
-            _nickListView = nicknameListViewController;
+            _rankListView = rankListViewController;
         }
 
         public void Dismiss()
@@ -29,8 +29,8 @@ namespace MultiplayerInfo.UI
         protected override void DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)
         {
             showBackButton = true;
-            SetTitle("Nickname Editor");
-            ProvideInitialViewControllers(_nickListView);
+            SetTitle("Global Ranks");
+            ProvideInitialViewControllers(_rankListView);
             visible = true;
         }
 

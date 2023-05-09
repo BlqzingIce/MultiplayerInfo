@@ -5,7 +5,7 @@ namespace MultiplayerInfo.Patches
 {
     internal class ServerPlayerTableCellPatch : IAffinity
     {
-        [Inject] PluginConfig _config;
+        [Inject] PluginConfig _config = null!;
 
         [AffinityPostfix]
         [AffinityPatch(typeof(GameServerPlayerTableCell), nameof(GameServerPlayerTableCell.SetData))]
