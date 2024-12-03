@@ -54,5 +54,5 @@ Check the global rank of players in your lobby (if they have a ScoreSaber or Bea
 - `EnableRankInfo`: Whether to get the rank of players in your lobby or not
 
 ## Credits
-This started as a port of some features from Quest's ScorePercentage, so big thanks to metal_marmott (aka Polly). Additional thanks to Zephyr, who's ui code I borrowed from, and Roy de Jong, who's code I also borrowed from.  
-Shoutout to the lovely folks at #pc-mod-dev for their help, and the modding community as a whole for being awesome.
+This started as a port of some features from Quest's ScorePercentage, so big thanks to metal_marmott (aka Polly) for the inspiration. Additional thanks to Roy de Jong, who's code in ServerBrowser I referenced for interfacing with MultiplayerCore.  
+Any list based UI code was originally from JDFixer, but has been edited to fit the needs of this mod.
