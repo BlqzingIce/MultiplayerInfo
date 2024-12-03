@@ -110,7 +110,7 @@ namespace MultiplayerInfo.UI
 
         private void Reload_List_From_Config()
         {
-            nickList.data.Clear();
+            nickList.Data.Clear();
 
             if (Plugin.Config.Nicknames == null)
             {
@@ -119,11 +119,11 @@ namespace MultiplayerInfo.UI
 
             foreach (var nick in Plugin.Config.Nicknames)
             {
-                nickList.data.Add(new CustomListTableData.CustomCellInfo($"{nick.Nick} ({nick.Name})"));
+                nickList.Data.Add(new CustomListTableData.CustomCellInfo($"{nick.Nick} ({nick.Name})"));
             }
 
-            nickList.tableView.ReloadData();
-            nickList.tableView.ClearSelection();
+            nickList.TableView.ReloadData();
+            nickList.TableView.ClearSelection();
             _selectedNick = null;
         }
 
@@ -148,17 +148,17 @@ namespace MultiplayerInfo.UI
                 }
             }
 
-            playerList.data.Clear();
+            playerList.Data.Clear();
             if (Players != null && Players.Count != 0)
             {
                 foreach (var player in Players)
                 {
-                    playerList.data.Add(new CustomListTableData.CustomCellInfo($"{player.Name}"));
+                    playerList.Data.Add(new CustomListTableData.CustomCellInfo($"{player.Name}"));
                 }
             }
 
-            playerList.tableView.ReloadData();
-            playerList.tableView.ClearSelection();
+            playerList.TableView.ReloadData();
+            playerList.TableView.ClearSelection();
             _selectedPlayer = null;
         }
 

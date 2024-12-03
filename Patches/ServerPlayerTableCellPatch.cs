@@ -1,5 +1,6 @@
 ﻿using SiraUtil.Affinity;
 using Zenject;
+using HMUI;
 
 namespace MultiplayerInfo.Patches
 {
@@ -9,7 +10,7 @@ namespace MultiplayerInfo.Patches
 
         [AffinityPostfix]
         [AffinityPatch(typeof(GameServerPlayerTableCell), nameof(GameServerPlayerTableCell.SetData))]
-        private void Postfix(IConnectedPlayer connectedPlayer, HMUI.CurvedTextMeshPro ____playerNameText)
+        private void Postfix(IConnectedPlayer connectedPlayer, CurvedTextMeshPro ____playerNameText)
         {
             for (int i = _config.Nicknames.Count - 1; i >= 0; i--)
             {

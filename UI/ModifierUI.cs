@@ -16,14 +16,14 @@ namespace MultiplayerInfo.UI
 
         public void Initialize()
 		{
-			GameplaySetup.instance.AddTab("MultiplayerInfo", "MultiplayerInfo.UI.modifierui.bsml", this, MenuType.Online);
+			GameplaySetup.Instance.AddTab("MultiplayerInfo", "MultiplayerInfo.UI.modifierui.bsml", this, MenuType.Online);
 		}
 
 		public void Dispose()
 		{
-			if (GameplaySetup.instance != null)
+			if (GameplaySetup.Instance != null)
 			{
-				GameplaySetup.instance.RemoveTab("MultiplayerInfo");
+				GameplaySetup.Instance.RemoveTab("MultiplayerInfo");
 			}
 		}
 

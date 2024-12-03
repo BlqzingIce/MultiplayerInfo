@@ -9,7 +9,7 @@ namespace MultiplayerInfo.Patches
         [Inject] PluginConfig _config = null!;
 
         [AffinityPostfix]
-        [AffinityPatch(typeof(MultiplayerScoreRingManager), nameof(MultiplayerScoreRingManager.SpawnTexts))]
+        [AffinityPatch(typeof(MultiplayerScoreRingManager), "SpawnTexts")]
         private void Postfix(List<IConnectedPlayer> ____allActivePlayers, Dictionary<string, MultiplayerScoreRingItem> ____scoreRingItems)
         {
             if (_config.EnableNicknames)

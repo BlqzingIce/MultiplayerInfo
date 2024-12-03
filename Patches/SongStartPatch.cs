@@ -7,7 +7,7 @@ namespace MultiplayerInfo.Patches
         public static int maxScore = -1;
 
         [AffinityPostfix]
-        [AffinityPatch(typeof(MultiplayerController), nameof(MultiplayerController.PerformSongStartSync))]
+        [AffinityPatch(typeof(MultiplayerController), "PerformSongStartSync")]
         private void Postfix()
         {
             if (BS_Utils.Plugin.LevelData.IsSet)

@@ -25,13 +25,39 @@ namespace MultiplayerInfo.Patches
             }
 
             if (!_config.EnableScoreInfo)
+            {
+                if (____scoreText.fontStyle == TMPro.FontStyles.Normal)
+                {
+                    ____scoreText.enableWordWrapping = true;
+                    ____scoreText.richText = false;
+                    ____scoreText.fontStyle = TMPro.FontStyles.Italic;
+                    ____scoreText.transform.localPosition = ____scoreText.transform.localPosition - new UnityEngine.Vector3(6.5f, 0, 0);
+                }
+                if (____orderText.fontStyle == TMPro.FontStyles.Normal)
+                {
+                    ____orderText.fontStyle = TMPro.FontStyles.Italic;
+                }
+                if (____nameText.fontStyle == TMPro.FontStyles.Normal)
+                {
+                    ____nameText.fontStyle = TMPro.FontStyles.Italic;
+                }
                 return;
+            }
 
-            if (____scoreText.richText == false)
+            if (____scoreText.fontStyle != TMPro.FontStyles.Normal)
             {
                 ____scoreText.enableWordWrapping = false;
                 ____scoreText.richText = true;
+                ____scoreText.fontStyle = TMPro.FontStyles.Normal;
                 ____scoreText.transform.localPosition = ____scoreText.transform.localPosition + new UnityEngine.Vector3(6.5f, 0, 0);
+            }
+            if (____orderText.fontStyle != TMPro.FontStyles.Normal)
+            {
+                ____orderText.fontStyle = TMPro.FontStyles.Normal;
+            }
+            if (____nameText.fontStyle != TMPro.FontStyles.Normal)
+            {
+                ____nameText.fontStyle = TMPro.FontStyles.Normal;
             }
 
             string rank = ____rankText.text;

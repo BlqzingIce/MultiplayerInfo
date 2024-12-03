@@ -19,8 +19,8 @@ Check the global rank of players in your lobby (if they have a ScoreSaber or Bea
 ## How To Install
 - Simply download MultiplayerInfo.dll from [releases](https://github.com/BlqzingIce/MultiplayerInfo/releases) and put it in your Plugins folder!
 - Requires BSIPA, BSML, SiraUtil and BS_Utils. Rank related features require MultiplayerCore
-- Tested on 1.28.0 and 1.29.1, might work on 1.21.0 - 1.27.0
-- Should be compatible with both BeatTogther, MultiplayerCore, and ServerBrowser
+- Tested on 1.39.1
+- Compatible with BeatTogther, MultiplayerCore, and ServerBrowser. Does not change anything in BS+'s Multiplayer+
 
 ## Config File
 - The config file can be found at Beat Saber/UserData/MultiplayerInfo.json

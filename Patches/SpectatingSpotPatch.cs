@@ -8,7 +8,7 @@ namespace MultiplayerInfo.Patches
         [Inject] PluginConfig _config = null!;
 
         [AffinityPostfix]
-        [AffinityPatch(typeof(MultiplayerSpectatingSpotPickerViewController), nameof(MultiplayerSpectatingSpotPickerViewController.RefreshSpectatingSpotName))]
+        [AffinityPatch(typeof(MultiplayerSpectatingSpotPickerViewController), "RefreshSpectatingSpotName")]
         private void Postfix(StepValuePicker ____stepValuePicker)
         {
             if (_config.EnableNicknames)

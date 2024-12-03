@@ -1,5 +1,6 @@
 ﻿using SiraUtil.Affinity;
 using Zenject;
+using BeatSaber.AvatarCore;
 
 namespace MultiplayerInfo.Patches
 {
@@ -8,7 +9,7 @@ namespace MultiplayerInfo.Patches
         [Inject] PluginConfig _config = null!;
 
         [AffinityPostfix]
-        [AffinityPatch(typeof(ConnectedPlayerName), nameof(ConnectedPlayerName.Start))]
+        [AffinityPatch(typeof(ConnectedPlayerName), "Start")]
         private void Postfix(IConnectedPlayer ____connectedPlayer, TMPro.TextMeshProUGUI ____nameText)
         {
             if (_config.EnableNicknames)

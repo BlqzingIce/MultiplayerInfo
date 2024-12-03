@@ -18,12 +18,13 @@ namespace MultiplayerInfo.Installers
             Container.BindInterfacesTo<MultiplayerLeaderboardPatch>().AsSingle();
             Container.BindInterfacesTo<SpectatingSpotPatch>().AsSingle();
 
-            Container.BindInterfacesAndSelfTo<PlayerHandler>().AsSingle();
+            //Container.BindInterfacesAndSelfTo<PlayerHandler>().AsSingle();
 
             if (Plugin.MpCoreEnabled)
             {
                 Container.BindInterfacesTo<MpPlayerPatch>().AsSingle();
                 Container.BindInterfacesAndSelfTo<RankGetter>().AsSingle();
+                Container.BindInterfacesAndSelfTo<PlayerHandler>().AsSingle();
             }
         }
     }

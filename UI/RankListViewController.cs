@@ -20,19 +20,19 @@ namespace MultiplayerInfo.UI
         [UIAction("select_rank")]
         private void Select_Rank(TableView tableView, int row)
         {
-            rankList.tableView.ClearSelection();
+            rankList.TableView.ClearSelection();
         }
 
         private void Reload_List()
         {
-            rankList.data.Clear();
+            rankList.Data.Clear();
 
             if (!_config.EnableRankInfo)
-                rankList.data.Add(new CustomListTableData.CustomCellInfo("Rank collection is disabled!"));
+                rankList.Data.Add(new CustomListTableData.CustomCellInfo("Rank collection is disabled!"));
 
             if (PlayerHandler.currentPlayerList.Count < 1 || MpPlayerPatch.cachedPlayerList.Count < 1)
             {
-                rankList.data.Add(new CustomListTableData.CustomCellInfo("No ranked players to display!"));
+                rankList.Data.Add(new CustomListTableData.CustomCellInfo("No ranked players to display!"));
             }
             else
             {
@@ -45,22 +45,22 @@ namespace MultiplayerInfo.UI
                             if (miPlayer.SSRank > 0 && miPlayer.BLRank > 0)
                             {
                                 string entry = miPlayer.Name + " - SS #" + miPlayer.SSRank + " | BL #" + miPlayer.BLRank;
-                                rankList.data.Add(new CustomListTableData.CustomCellInfo(entry));
+                                rankList.Data.Add(new CustomListTableData.CustomCellInfo(entry));
                             }
                             else if (miPlayer.SSRank > 0 && miPlayer.BLRank <= 0)
                             {
                                 string entry = miPlayer.Name + " - SS #" + miPlayer.SSRank;
-                                rankList.data.Add(new CustomListTableData.CustomCellInfo(entry));
+                                rankList.Data.Add(new CustomListTableData.CustomCellInfo(entry));
                             }
                             else if (miPlayer.SSRank <= 0 && miPlayer.BLRank > 0)
                             {
                                 string entry = miPlayer.Name + " - BL #" + miPlayer.BLRank;
-                                rankList.data.Add(new CustomListTableData.CustomCellInfo(entry));
+                                rankList.Data.Add(new CustomListTableData.CustomCellInfo(entry));
                             }
                             else
                             {
                                 string entry = miPlayer.Name + " - N/A";
-                                rankList.data.Add(new CustomListTableData.CustomCellInfo(entry));
+                                rankList.Data.Add(new CustomListTableData.CustomCellInfo(entry));
                             }
                             break;
                         }
@@ -68,12 +68,12 @@ namespace MultiplayerInfo.UI
                 }
             }
 
-            if (rankList.data.Count == 0)
+            if (rankList.Data.Count == 0)
             {
-                rankList.data.Add(new CustomListTableData.CustomCellInfo("No ranked players to display!"));
+                rankList.Data.Add(new CustomListTableData.CustomCellInfo("No ranked players to display!"));
             }
 
-            rankList.tableView.ReloadData();
+            rankList.TableView.ReloadData();
         }
 
         protected override void DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)

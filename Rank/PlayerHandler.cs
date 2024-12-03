@@ -1,6 +1,8 @@
-﻿using MultiplayerInfo.Models;
+﻿extern alias UserModel;
+using MultiplayerInfo.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Zenject;
 
 namespace MultiplayerInfo.Rank
@@ -10,8 +12,8 @@ namespace MultiplayerInfo.Rank
         [Inject] private readonly PluginConfig _config = null!;
         [Inject] private readonly IMultiplayerSessionManager _multiplayerSession = null!;
         [Inject] private readonly RankGetter _rankGetter = null!;
-        [Inject] private readonly IPlatformUserModel _platformUserModel;
-        private UserInfo _localPlayerInfo = null!;
+        [Inject] private readonly UserModel.IPlatformUserModel _platformUserModel;
+        private UserModel.UserInfo _localPlayerInfo = null!;
 
         public static List<BasicPlayer> currentPlayerList = new List<BasicPlayer>();
 
@@ -22,7 +24,7 @@ namespace MultiplayerInfo.Rank
             _multiplayerSession.playerConnectedEvent += HandlePlayerConnected;
             _multiplayerSession.playerDisconnectedEvent += HandlePlayerDisconnected;
 
-            _localPlayerInfo = await _platformUserModel.GetUserInfo();
+            _localPlayerInfo = await _platformUserModel.GetUserInfo(CancellationToken.None);
         }
 
         public void Dispose()
