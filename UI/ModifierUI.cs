@@ -79,5 +79,11 @@ namespace MultiplayerInfo.UI
             _rankFlow._parentFlow = currentFlow;
             currentFlow.PresentFlowCoordinator(_rankFlow);
         }
+
+        [UIValue("sph_enabled")]
+        public bool SPHEnabled
+        {
+            get => Plugin.SPHEnabled;
+        }
     }
 }

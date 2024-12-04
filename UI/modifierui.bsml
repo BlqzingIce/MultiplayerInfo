@@ -12,4 +12,8 @@
 			<button text='Open Rank Display' on-click='rank_button_clicked' hover-hint='View the known ScoreSaber and BeatLeader ranks for players currently in your lobby'></button>
 		</vertical>
 	</horizontal>
+	<vertical pad-top='8' spacing='8' active='~sph_enabled'>
+		<text align='Center' text='SongPlayHistory detected!'/>
+		<text align='Center' text='Score Info may not display properly if Multiplayer Results Percentage is enabled!'/>
+	</vertical>
 </settings-container>

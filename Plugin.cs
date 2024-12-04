@@ -15,6 +15,7 @@ namespace MultiplayerInfo
         private Zenjector _zenjector = null!;
 
         internal static bool MpCoreEnabled = false;
+        internal static bool SPHEnabled = false;
 
         [Init]
         public void Init(IPALogger logger, Zenjector zenjector, IPA.Config.Config config)
@@ -36,6 +37,9 @@ namespace MultiplayerInfo
                 MpCoreEnabled = true;
             else
                 _log.Info("MultiplayerCore not found, some features will be disabled!");
+
+            if (IPA.Loader.PluginManager.EnabledPlugins.Any(x => x.Id == "SongPlayHistory"))
+                SPHEnabled = true;
 
             _zenjector.Install<MultiplayerInfoAppInstaller>(Location.App);
             _zenjector.Install<MultiplayerInfoMenuInstaller>(Location.Menu);
