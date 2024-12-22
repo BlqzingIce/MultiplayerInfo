@@ -19,7 +19,6 @@ Check the global rank of players in your lobby (if they have a ScoreSaber or Bea
 ## How To Install
 - Simply download MultiplayerInfo.dll from [releases](https://github.com/BlqzingIce/MultiplayerInfo/releases) and put it in your Plugins folder!
 - Requires BSIPA, BSML, SiraUtil and BS_Utils. Rank related features require MultiplayerCore
-- Tested on 1.39.1
 - Compatible with BeatTogther, MultiplayerCore, and ServerBrowser. Does not change anything in BS+'s Multiplayer+
 - SongPlayHistory's Multiplayer Results Percentage might override or conflict with Results Info if both are enabled!
 
