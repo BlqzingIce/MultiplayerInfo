@@ -5,7 +5,7 @@ namespace MultiplayerInfo.Patches
 {
     internal class SpectatingSpotPatch : IAffinity
     {
-        [Inject] PluginConfig _config = null!;
+        [Inject] PluginConfig _config = null;
 
         [AffinityPostfix]
         [AffinityPatch(typeof(MultiplayerSpectatingSpotPickerViewController), "RefreshSpectatingSpotName")]

@@ -7,7 +7,7 @@ namespace MultiplayerInfo.Rank
 {
     public class RankGetter
     {
-        [Inject] private readonly IHttpService _httpService = null!;
+        [Inject] private readonly IHttpService _httpService = null;
 
         public async void GetScoreSaberRank(int index, string platformId)
         {

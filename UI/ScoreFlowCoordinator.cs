@@ -8,8 +8,8 @@ namespace MultiplayerInfo.UI
     {
         bool visible = false;
 
-        public FlowCoordinator _parentFlow = null!;
-        private ScoreSettingsViewController _scoreSettingsView = null!;
+        public FlowCoordinator _parentFlow = null;
+        private ScoreSettingsViewController _scoreSettingsView = null;
 
         [Inject]
         public void Construct(ScoreSettingsViewController scoreSettingsViewController)

@@ -12,7 +12,7 @@ namespace MultiplayerInfo.UI
     [ViewDefinition("MultiplayerInfo.UI.ranklist.bsml")]
     public class RankListViewController : BSMLAutomaticViewController
     {
-        [Inject] private readonly PluginConfig _config = null!;
+        [Inject] private readonly PluginConfig _config = null;
 
         [UIComponent("rank_list")]
         public CustomListTableData rankList;

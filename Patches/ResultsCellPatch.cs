@@ -6,7 +6,7 @@ namespace MultiplayerInfo.Patches
 {
     internal class ResultsCellPatch : IAffinity
     {
-        [Inject] private readonly PluginConfig _config = null!;
+        [Inject] private readonly PluginConfig _config = null;
 
         [AffinityPostfix]
         [AffinityPatch(typeof(ResultsTableCell), nameof(ResultsTableCell.SetData))]

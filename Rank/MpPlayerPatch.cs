@@ -9,10 +9,10 @@ namespace MultiplayerInfo.Rank
 {
     internal class MpPlayerPatch : IAffinity
     {
-        [Inject] private readonly SiraLog _log = null!;
-        [Inject] private readonly PluginConfig _config = null!;
-        [Inject] private readonly MpPlayerManager _mpPlayerManager = null!;
-        [Inject] private readonly RankGetter _rankGetter = null!;
+        [Inject] private readonly SiraLog _log = null;
+        [Inject] private readonly PluginConfig _config = null;
+        [Inject] private readonly MpPlayerManager _mpPlayerManager = null;
+        [Inject] private readonly RankGetter _rankGetter = null;
 
         public static List<MIPlayer> cachedPlayerList = new List<MIPlayer>();
 

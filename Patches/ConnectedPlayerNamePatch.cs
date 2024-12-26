@@ -6,7 +6,7 @@ namespace MultiplayerInfo.Patches
 {
     internal class ConnectedPlayerNamePatch : IAffinity
     {
-        [Inject] PluginConfig _config = null!;
+        [Inject] PluginConfig _config = null;
 
         [AffinityPostfix]
         [AffinityPatch(typeof(ConnectedPlayerName), "Start")]

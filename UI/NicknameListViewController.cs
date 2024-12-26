@@ -13,7 +13,7 @@ namespace MultiplayerInfo.UI
     public class NicknameListViewController : BSMLAutomaticViewController
     {
         [UIParams]
-        private readonly BSMLParserParams parserParams = null!;
+        private readonly BSMLParserParams parserParams = null;
 
         [UIComponent("nick_list")]
         public CustomListTableData nickList;

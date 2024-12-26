@@ -8,8 +8,8 @@ namespace MultiplayerInfo.UI
     {
         bool visible = false;
 
-        public FlowCoordinator _parentFlow = null!;
-        private NicknameListViewController _nickListView = null!;
+        public FlowCoordinator _parentFlow = null;
+        private NicknameListViewController _nickListView = null;
 
         [Inject]
         public void Construct(NicknameListViewController nicknameListViewController)

@@ -8,8 +8,8 @@ namespace MultiplayerInfo.UI
     {
         bool visible = false;
 
-        public FlowCoordinator _parentFlow = null!;
-        private RankListViewController _rankListView = null!;
+        public FlowCoordinator _parentFlow = null;
+        private RankListViewController _rankListView = null;
 
         [Inject]
         public void Construct(RankListViewController rankListViewController)

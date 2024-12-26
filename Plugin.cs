@@ -10,9 +10,9 @@ namespace MultiplayerInfo
     [Plugin(RuntimeOptions.SingleStartInit)]
     public class Plugin
     {
-        internal static PluginConfig Config { get; private set; } = null!;
-        private IPALogger _log = null!;
-        private Zenjector _zenjector = null!;
+        internal static PluginConfig Config { get; private set; } = null;
+        private IPALogger _log = null;
+        private Zenjector _zenjector = null;
 
         internal static bool MpCoreEnabled = false;
         internal static bool SPHEnabled = false;

@@ -6,7 +6,7 @@ namespace MultiplayerInfo.Patches
 {
     internal class ScoreRingPatch : IAffinity
     {
-        [Inject] PluginConfig _config = null!;
+        [Inject] PluginConfig _config = null;
 
         [AffinityPostfix]
         [AffinityPatch(typeof(MultiplayerScoreRingManager), "SpawnTexts")]

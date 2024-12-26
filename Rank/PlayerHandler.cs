@@ -1,5 +1,4 @@
-﻿extern alias UserModel;
-using MultiplayerInfo.Models;
+﻿using MultiplayerInfo.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -9,11 +8,11 @@ namespace MultiplayerInfo.Rank
 {
     public class PlayerHandler : IInitializable, IDisposable
     {
-        [Inject] private readonly PluginConfig _config = null!;
-        [Inject] private readonly IMultiplayerSessionManager _multiplayerSession = null!;
-        [Inject] private readonly RankGetter _rankGetter = null!;
-        [Inject] private readonly UserModel.IPlatformUserModel _platformUserModel;
-        private UserModel.UserInfo _localPlayerInfo = null!;
+        [Inject] private readonly PluginConfig _config = null;
+        [Inject] private readonly IMultiplayerSessionManager _multiplayerSession = null;
+        [Inject] private readonly RankGetter _rankGetter = null;
+        [Inject] private readonly IPlatformUserModel _platformUserModel = null;
+        private UserInfo _localPlayerInfo = null;
 
         public static List<BasicPlayer> currentPlayerList = new List<BasicPlayer>();
 
@@ -79,7 +78,7 @@ namespace MultiplayerInfo.Rank
             if (currentPlayerList.Exists(x => x.Id == player.userId))
                 return;
 
-            currentPlayerList.Add(new(player.userId, player.userName));
+            currentPlayerList.Add(new BasicPlayer(player.userId, player.userName));
         }
 
         private void HandlePlayerDisconnected(IConnectedPlayer player)
