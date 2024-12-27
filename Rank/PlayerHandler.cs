@@ -51,8 +51,8 @@ namespace MultiplayerInfo.Rank
 
             if (!MpPlayerPatch.cachedPlayerList.Exists(x => x.Id == _multiplayerSession.localPlayer.userId))
             {
-                MIPlayer miPlayer = new MIPlayer(_multiplayerSession.localPlayer.userId, _multiplayerSession.localPlayer.userName, _localPlayerInfo.platformUserId);
-                MpPlayerPatch.cachedPlayerList.Add(miPlayer);
+                PlatformPlayer platformPlayer = new PlatformPlayer(_multiplayerSession.localPlayer.userId, _multiplayerSession.localPlayer.userName, _localPlayerInfo.platformUserId);
+                MpPlayerPatch.cachedPlayerList.Add(platformPlayer);
             }
 
             int index = MpPlayerPatch.cachedPlayerList.FindIndex(x => x.Id == _multiplayerSession.localPlayer.userId);

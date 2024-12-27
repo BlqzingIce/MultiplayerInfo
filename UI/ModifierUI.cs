@@ -83,7 +83,7 @@ namespace MultiplayerInfo.UI
         [UIValue("sph_enabled")]
         public bool SPHEnabled
         {
-            get => Plugin.SPHEnabled;
+            get => Plugin.SongPlayHistoryEnabled;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace MultiplayerInfo.UI
             {
                 foreach (BasicPlayer player in PlayerHandler.currentPlayerList)
                 {
-                    foreach (MIPlayer miPlayer in MpPlayerPatch.cachedPlayerList)
+                    foreach (PlatformPlayer miPlayer in MpPlayerPatch.cachedPlayerList)
                     {
                         if (player.Id == miPlayer.Id)
                         {

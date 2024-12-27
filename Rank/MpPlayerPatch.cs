@@ -14,7 +14,7 @@ namespace MultiplayerInfo.Rank
         [Inject] private readonly MpPlayerManager _mpPlayerManager = null;
         [Inject] private readonly RankGetter _rankGetter = null;
 
-        public static List<MIPlayer> cachedPlayerList = new List<MIPlayer>();
+        public static List<PlatformPlayer> cachedPlayerList = new List<PlatformPlayer>();
 
         [AffinityPostfix]
         [AffinityPatch(typeof(MpPlayerManager), "HandlePlayerData")]
@@ -32,9 +32,9 @@ namespace MultiplayerInfo.Rank
                     return;
                 }
 
-                MIPlayer miPlayer = new MIPlayer(player.userId, player.userName, playerData.PlatformId);
-                _log.Info("Added " + miPlayer.Name + " (" + miPlayer.PlatformId + ") to cached list");
-                cachedPlayerList.Add(miPlayer);
+                PlatformPlayer platformPlayer = new PlatformPlayer(player.userId, player.userName, playerData.PlatformId);
+                _log.Info("Added " + platformPlayer.Name + " (" + platformPlayer.PlatformId + ") to cached list");
+                cachedPlayerList.Add(platformPlayer);
             }
 
             int index = cachedPlayerList.FindIndex(x => x.Id == player.userId);
