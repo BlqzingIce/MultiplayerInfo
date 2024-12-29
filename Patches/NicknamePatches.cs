@@ -43,23 +43,19 @@ namespace MultiplayerInfo.Patches
         }
     }
     
-    internal class ScoreRingPatch : IAffinity
+    internal class ScoreItemPatch : IAffinity
     {
         [Inject] private readonly PluginConfig _config = null;
 
         [AffinityPostfix]
-        [AffinityPatch(typeof(MultiplayerScoreRingManager), "SpawnTexts")]
-        private void Postfix(List<IConnectedPlayer> ____allActivePlayers, Dictionary<string, MultiplayerScoreRingItem> ____scoreRingItems)
+        [AffinityPatch(typeof(MultiplayerScoreItem), nameof(MultiplayerScoreItem.SetName))]
+        private void Postfix(string text, TextMeshProUGUI ____nameText)
         {
-            if (!_config.EnableNicknames) return;
-            foreach (IConnectedPlayer player in ____allActivePlayers)
+            for (int i = _config.Nicknames.Count - 1; i >= 0; i--)
             {
-                for (int i = _config.Nicknames.Count - 1; i >= 0; i--)
-                {
-                    if (!_config.Nicknames[i].PlayerId.Equals(player.userId)) continue;
-                    ____scoreRingItems[player.userId].SetName(_config.Nicknames[i].Nick);
-                    break;
-                }
+                if (!_config.Nicknames[i].Name.Equals(text)) continue;
+                ____nameText.text = _config.Nicknames[i].Nick;
+                break;
             }
         }
     }

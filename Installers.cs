@@ -13,7 +13,7 @@ namespace MultiplayerInfo
 
             Container.BindInterfacesTo<ConnectedPlayerNamePatch>().AsSingle();
             Container.BindInterfacesTo<ResultsCellPatch>().AsSingle();
-            Container.BindInterfacesTo<ScoreRingPatch>().AsSingle();
+            Container.BindInterfacesTo<ScoreItemPatch>().AsSingle();
             Container.BindInterfacesTo<ServerPlayerTableCellPatch>().AsSingle();
             Container.BindInterfacesTo<SongStartPatch>().AsSingle();
             Container.BindInterfacesTo<MultiplayerLeaderboardPatch>().AsSingle();
