@@ -6,16 +6,16 @@
         <AssemblyName>MultiplayerInfo</AssemblyName>
         <Authors>BlqzingIce</Authors>
         <Version>2.2.0</Version>
-        <GameVersion>1.40.0</GameVersion>
+        <GameVersion>1.39.1</GameVersion>
         <Description>Extra stats and info in multiplayer!</Description>
-        <ProjectHome></ProjectHome>
-        <ProjectSource></ProjectSource>
-        <Donate></Donate>
+        <!-- <ProjectHome></ProjectHome> -->
+        <!-- <ProjectSource></ProjectSource> -->
+        <!-- <Donate></Donate> -->
     </PropertyGroup>
     <ItemGroup>
         <Dependency Include="BSIPA" Version="^4.3.5" />
         <Dependency Include="SiraUtil" Version="^3.1.14" />
-        <Dependency Include="BeatSaberMarkupLanguage" Version="^1.12.5" />
+        <Dependency Include="BeatSaberMarkupLanguage" Version="^1.12.4" />
         <Dependency Include="BS Utils" Version="^1.14.2" />
     </ItemGroup>
     <!-- End Manifest -->
