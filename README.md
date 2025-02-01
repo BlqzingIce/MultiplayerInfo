@@ -26,15 +26,21 @@ Check the global rank of players in your lobby (if they have a ScoreSaber or Bea
 - The config file can be found at Beat Saber/UserData/MultiplayerInfo.json
 - `EnableScoreInfo`: Whether to change what is displayed on the multiplayer results table or not
 - `ShowOrder`: Show the placement order next to your name
-- `ShowRank`: If you finished the level, display your rank (F for failed and NF for no fail will still be shown unless everything else is disabled)
+- `ShowRank`: If you finished the level, display your rank (F for failed and NF for no-fail will be shown regardless)
 - `ShowCombo`: Show max combo, and a golden FC if you fc'd
 - `ShowMisses`: Show total misses, unless you fc'd
 - `ShowBombs`: Show total bombs hit + walls hit, unless you fc'd
 - `ShowScore`: Self explanatory
 - `ShowPercent`: Show percent of total possible score
-- `ShowAccuracy`: Show player's average cut accuracy (out of 115)
-- `PercentAcc`: If show accuracy is enabled, display average cut accuracy as a percent instead of out of 115
-- `DetailedAcc`: If show accuracy is enabled, also display average score from acc and average score from swing
+- `ShowEstimatedPercent`: Show estimated score percent based on completion results, useful when using per-player difficulties but breaks on maps with non-standard scoring elements (like chains)
+- `ShowAccuracy`: Show accuracy based on the option set below
+- `AccDisplay`: Chooses how your accuracy is displayed:  
+  `0` = `Number`: As a number out of 115  
+  `1` = `Split`: As two numbers, swing acc out of 100 and cut acc out of 15  
+  `2` = `Percent`: As a percent  
+  `3` = `PercentAndNumber`: Percent | Number  
+  `4` = `PercentAndSplit`: Percent | Split  
+  `5` = `SaberSurgeon`: Only cut acc, but as a percent
 - `EnableNicknames`: Whether custom nicknames set by the player should be used or not
 - `Nicknames` formatting example:
 ```
@@ -51,7 +57,7 @@ Check the global rank of players in your lobby (if they have a ScoreSaber or Bea
   }
 ]
 ```
-- `EnableRankInfo`: Whether to get the rank of players in your lobby or not
+- `EnableRankInfo`: Whether to query the rank of players in your lobby or not
 
 ## Credits
 This started as a port of some features from Quest's ScorePercentage, so big thanks to metal_marmott (aka Polly) for the inspiration. Additional thanks to Roy de Jong, who's code in ServerBrowser I referenced for interfacing with MultiplayerCore.  
