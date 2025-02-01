@@ -5,15 +5,15 @@
 			<checkbox-setting preferred-width="50" text='Show Order' value='ShowOrder' apply-on-change='true' hover-hint='Display placement order next to name&#xA;(e.g. 1)'/>
 			<checkbox-setting preferred-width="50" text='Show Rank' value='ShowRank' apply-on-change='true' hover-hint='Display rank if the song was finished&#xA;(e.g. SS)'/>
 			<checkbox-setting preferred-width="50" text='Show Combo' value='ShowCombo' apply-on-change='true' hover-hint='Display max combo, and if it was a full combo&#xA;(e.g. 289 🔄)'/>
-			<checkbox-setting preferred-width="50" text='Show Misses' value='ShowMisses' apply-on-change='true' hover-hint='If not a full combo, display total misses&#xA;(e.g. X 5)'/>
-			<checkbox-setting preferred-width="50" text='Show Bombs' value='ShowBombs' apply-on-change='true' hover-hint='If not a full combo, display total bombs hit + walls hit&#xA;(e.g. 💣 1)'/>
+			<checkbox-setting preferred-width="50" text='Show Misses' value='ShowMisses' apply-on-change='true' hover-hint='If not a full combo, display total misses&#xA;(e.g. 5 X)'/>
+			<checkbox-setting preferred-width="50" text='Show Bombs' value='ShowBombs' apply-on-change='true' hover-hint='If not a full combo, display total bombs hit + walls hit&#xA;(e.g. 1 💣)'/>
 		</vertical>
 		<vertical spacing='1'>
-			<checkbox-setting preferred-width="50" text='Show Score' value='ShowScore' apply-on-change='true' hover-hint='Display score&#xA;(e.g. 678,293)'/>
-			<checkbox-setting preferred-width="50" text='Show Percent' value='ShowPercent' apply-on-change='true' hover-hint='Display percent of total possible score achieved&#xA;(e.g. 93.14%)'/>
-			<checkbox-setting preferred-width="50" text='Show Accuracy' value='ShowAccuracy' apply-on-change='true' hover-hint='Display average cut accuracy out of 115 for standard notes&#xA;(e.g. 108.8)'/>
-			<checkbox-setting preferred-width="50" text='Percent Acc' value='PercentAcc' apply-on-change='true' hover-hint='If Show Accuracy is enabled, display average cut accuracy as a percent instead of a number&#xA;(e.g. 94.61%)'/>
-			<checkbox-setting preferred-width="50" text='Detailed Acc' value='DetailedAcc' apply-on-change='true' hover-hint='If Show Accuracy is enabled, also display average cut score split into score from precision out of 15, and from swing angle out of 100&#xA;(e.g. 99.3 + 9.5)'/>
+			<checkbox-setting preferred-width="60" text='Show Score' value='ShowScore' apply-on-change='true' hover-hint='Display score&#xA;(e.g. 678,293)'/>
+			<checkbox-setting preferred-width="60" text='Show Score Percent' value='ShowPercent' apply-on-change='true' hover-hint='Display percent of total possible score achieved&#xA;(e.g. 93.14%)'/>
+			<checkbox-setting preferred-width="60" text='Show Estimated Percent' value='ShowEstimatedPercent' apply-on-change='true' hover-hint='Display estimated score percent based on completion results&#xA;Useful when using per-player difficulties'/>
+			<checkbox-setting preferred-width="60" text='Show Accuracy' value='ShowAccuracy' apply-on-change='true' hover-hint='Display accuracy based on the option set below&#xA;(e.g. 99.3+9.5)'/>
+			<dropdown-list-setting preferred-width="60" text='Acc Display' value='AccDisplayValue' choices='AccDisplayList' bind-value='true' apply-on-change='true'/>
 		</vertical>
 	</horizontal>
 </settings-container>

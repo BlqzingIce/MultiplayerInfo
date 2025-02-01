@@ -1,9 +1,12 @@
-﻿using BeatSaberMarkupLanguage.Attributes;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.ViewControllers;
+using MultiplayerInfo.Models;
 
 namespace MultiplayerInfo.UI
 {
-    [HotReload(RelativePathToLayout = @"scoresettings.bsml")]
     [ViewDefinition("MultiplayerInfo.UI.scoresettings.bsml")]
     public class ScoreSettingsViewController : BSMLAutomaticViewController
     {
@@ -55,6 +58,13 @@ namespace MultiplayerInfo.UI
             get => Plugin.Config.ShowPercent;
             set => Plugin.Config.ShowPercent = value;
         }
+        
+        [UIValue("ShowEstimatedPercent")]
+        public bool ShowEstimatedPercent
+        {
+            get => Plugin.Config.ShowEstimatedPercent;
+            set => Plugin.Config.ShowEstimatedPercent = value;
+        }
 
         [UIValue("ShowAccuracy")]
         public bool ShowAccuracy
@@ -63,28 +73,13 @@ namespace MultiplayerInfo.UI
             set => Plugin.Config.ShowAccuracy = value;
         }
 
-        [UIValue("PercentAcc")]
-        public bool PercentAcc
+        [UIValue("AccDisplayList")]
+        public List<object> AccDisplayList = Enum.GetValues(typeof(AccDisplay)).Cast<object>().ToList();
+        [UIValue("AccDisplayValue")]
+        public AccDisplay AccDisplayValue
         {
-            get => Plugin.Config.PercentAcc;
-            set => Plugin.Config.PercentAcc = value;
-        }
-
-        [UIValue("DetailedAcc")]
-        public bool DetailedAcc
-        {
-            get => Plugin.Config.DetailedAcc;
-            set => Plugin.Config.DetailedAcc = value;
-        }
-
-        protected override void DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)
-        {
-            base.DidActivate(firstActivation, addedToHierarchy, screenSystemEnabling);
-        }
-
-        protected override void DidDeactivate(bool removedFromHierarchy, bool screenSystemDisabling)
-        {
-            base.DidDeactivate(removedFromHierarchy, screenSystemDisabling);
+            get => Plugin.Config.AccDisplay;
+            set => Plugin.Config.AccDisplay = value;
         }
     }
 }

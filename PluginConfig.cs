@@ -15,9 +15,9 @@ namespace MultiplayerInfo
         public virtual bool ShowBombs { get; set; } = false;
         public virtual bool ShowScore { get; set; } = true;
         public virtual bool ShowPercent { get; set; } = true;
+        public virtual bool ShowEstimatedPercent { get; set; } = false;
         public virtual bool ShowAccuracy { get; set; } = false;
-        public virtual bool PercentAcc { get; set; } = false;
-        public virtual bool DetailedAcc { get; set; } = false;
+        public virtual AccDisplay AccDisplay { get; set; } = AccDisplay.Number;
 
         public virtual bool EnableNicknames { get; set; } = true;
         [UseConverter(typeof(ListConverter<Nickname>))]
